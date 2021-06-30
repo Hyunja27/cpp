@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = phonebook
 
 SRC_DIR = src
 CC = clang++
@@ -8,7 +8,7 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		megaphone.cpp \
+		phonebook.cpp \
 		)
 
 GREEN = \033[32m
@@ -24,8 +24,8 @@ all : $(NAME)
 
 $(NAME) :
 	@echo "${PURPLE}[${RED} Makefile${PURPLE} :starting.. ]"
-	@echo "${PURPLE}->making megaphone.."
-	@$(CC) $(C98_FLAG) $(GCC_FLAG) $(SRC) -o megaphone
+	@echo "${PURPLE}->making $(NAME).."
+	@$(CC) $(C98_FLAG) $(GCC_FLAG) $(SRC) -o $(NAME)
 	@echo "${PURPLE}->resting.. drinking some coffee..."
 	@echo "${MINT}making Done."
 
@@ -35,6 +35,8 @@ clean :
 	@echo "${PURPLE}->kill every objects, include libft objects.."
 	@echo "${PURPLE}->clearing dead bodys..."
 	@echo "${MINT}cleaning Done."
+
+re : clean all
 
 fclean :
 	@echo "${PURPLE}[${RED} cleaning ${PURPLE} : erase objects file.]"

@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 14:53:51 by spark             #+#    #+#             */
-/*   Updated: 2021/07/01 18:30:23 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/01 20:16:55 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@
 class Data
 {
     private:
-        std::string first_name[8];
-        std::string last_name[8];
-        std::string nick_name[8];
-        std::string login_name[8];
-        std::string postal_address[8];
-        std::string email_address[8];
-        std::string phone_number[8];
-        std::string birthday_date[8];
-        std::string favorite_meal[8];
-        std::string underware_color[8];
-        std::string darkest_secret[8];
+        std::string first_name[9];
+        std::string last_name[9];
+        std::string nick_name[9];
+        std::string login_name[9];
+        std::string postal_address[9];
+        std::string email_address[9];
+        std::string phone_number[9];
+        std::string birthday_date[9];
+        std::string favorite_meal[9];
+        std::string underware_color[9];
+        std::string darkest_secret[9];
     public:
         void get_first_name(int i);
         void get_last_name(int i);

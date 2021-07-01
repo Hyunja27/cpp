@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 14:53:58 by spark             #+#    #+#             */
-/*   Updated: 2021/07/01 18:59:52 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/01 20:16:39 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int main()
         command = get_new_line();
         if (command == "ADD")
         {
-            if (index == 7)
+            if (index == 8)
             {
                 std::cout << std::endl << "contact is Full !!" << std::endl;
             }

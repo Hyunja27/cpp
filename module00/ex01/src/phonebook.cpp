@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 14:53:58 by spark             #+#    #+#             */
-/*   Updated: 2021/07/01 21:01:11 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/01 21:42:05 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,16 @@ void    select_data(int max, Data& contact)
     
     if (std::cin.fail())
     {
-        std::cout << std::endl << "Wrong Index. press enter!" << std::endl << std::endl;
+        std::cout << std::endl << "Wrong Index." << std::endl << std::endl;
         std::cin.clear();
         std::cin.ignore(256, '\n');
         return ;
     }
     if ((int)i > max || (int)i < 0 || i == 0)
     {
-        std::cout << std::endl << "Wrong Index. press enter!" << std::endl << std::endl;
+        std::cout << std::endl << "Wrong Index." << std::endl << std::endl;
         std::cin.clear();
-        std::cin.ignore(256, '\n');
+        std::cin.ignore();
         return ;
     }
     else
@@ -139,9 +139,7 @@ int main()
         if (command == "ADD")
         {
             if (index == 8)
-            {
                 std::cout << std::endl << "contact is Full !!" << std::endl;
-            }
             else
             {
                 add_info(index, contact);
@@ -149,11 +147,7 @@ int main()
             }
         }
         else if (command == "SEARCH")
-        {
             view_info(index, contact);
-            std::cin.clear();
-            std::cin.ignore(256, '\n');
-        }
         else if (command == "EXIT")
         {
 			std::cout << "EXIT?! OK! SeeYA!" << std::endl;

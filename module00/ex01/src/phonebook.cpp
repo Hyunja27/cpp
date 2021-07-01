@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 14:53:58 by spark             #+#    #+#             */
-/*   Updated: 2021/07/01 20:16:39 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/01 21:01:11 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ std::string		get_new_line()
 
 	std::cout << std::endl << std::endl
     << "Enter what you want to do : ";
-    std::cin >> command;
+    std::getline(std::cin, command);
+    std::cin.clear();
+    // std::cin.ignore(256, '\n');
+    // std::cin >> command;
 	return (command);
 }
 
@@ -46,7 +49,7 @@ void		add_info(int i, Data& contact)
     contact.get_underware_color(i);
     std::cout << std::endl << "Enter darkest_secret." << std::endl << std::endl << "-> ";
     contact.get_darkest_secret(i);
-    std::cin.ignore();
+    std::cin.clear();
     return ;
 }
 
@@ -78,6 +81,7 @@ void    view_specific_data(int i, Data& contact)
     std::cout << std::endl << std::setw(15) << "favorite_meal." << std::setw(5) << "-> " << contact.show_favorite_meal(i);
     std::cout << std::endl << std::setw(15) << "underware_color!!!!!!" << std::setw(5) << "-> " << contact.show_underware_color(i);
     std::cout << std::endl << std::setw(15) << "darkest_secret" << std::setw(5) << "-> " << contact.show_darkest_secret(i);
+    std::cin.clear();
 }
 
 void    select_data(int max, Data& contact)
@@ -147,17 +151,18 @@ int main()
         else if (command == "SEARCH")
         {
             view_info(index, contact);
-            std::cin.ignore();
+            std::cin.clear();
+            std::cin.ignore(256, '\n');
         }
         else if (command == "EXIT")
         {
-			std::cout << "EXIT?! OK!" << std::endl;
+			std::cout << "EXIT?! OK! SeeYA!" << std::endl;
 			break;
 		}
         else 
         {
-            std::cout << "that's not good.";
-            std::cin.ignore(256, '\n');
+            std::cout << "that's not good. re_type";
+            std::cin.clear();
         }
     }
     return (0);

@@ -1,6 +1,7 @@
 NAME = phonebook
 
 SRC_DIR = src
+INC_DIR = includes
 CC = clang++
 C98_FLAG = -std=c++98
 GCC_FLAG = -Wall -Wextra -Werror
@@ -9,6 +10,11 @@ RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
 		phonebook.cpp \
+		data.cpp\
+		)
+
+INC =  $(addprefix $(INC_DIR)/, \
+		data.hpp \
 		)
 
 GREEN = \033[32m
@@ -25,7 +31,7 @@ all : $(NAME)
 $(NAME) :
 	@echo "${PURPLE}[${RED} Makefile${PURPLE} :starting.. ]"
 	@echo "${PURPLE}->making $(NAME).."
-	@$(CC) $(C98_FLAG) $(GCC_FLAG) $(SRC) -o $(NAME)
+	@$(CC) $(C98_FLAG) $(GCC_FLAG) -I $(INC_DIR) $(SRC) -o $(NAME)
 	@echo "${PURPLE}->resting.. drinking some coffee..."
 	@echo "${MINT}making Done."
 

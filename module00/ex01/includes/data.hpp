@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 14:53:51 by spark             #+#    #+#             */
-/*   Updated: 2021/07/01 20:16:55 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/02 20:35:06 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ class Data
         std::string show_favorite_meal(int i);
         std::string show_underware_color(int i);
         std::string show_darkest_secret(int i);
-        
         
 };
 

@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 19:35:59 by spark             #+#    #+#             */
-/*   Updated: 2021/07/07 16:43:21 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/07 20:26:59 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,13 @@
 Zombie* zombieHorde( int N, std::string name )
 {
 	int i = -1;
-	Zombie *Horde[N];
-	
+	Zombie *Horde = new Zombie[N];
+
 	while (++i < N)
 	{
-		Horde[i] = newZombie(name); 
-		Horde[i]->announce();
+		Horde[i].name = name; 
+		Horde[i].announce();
 	}
-	i = -1;
-	while (++i < N)
-	{
-		delete(Horde[i]); 
-	}
-	return (Horde[0]);
+
+	return (Horde);
 }

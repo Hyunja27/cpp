@@ -10,7 +10,7 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-HumanB::HumanB(std::string _name) 
+HumanB::HumanB(std::string _name)
 {
 	name = _name;
 }
@@ -46,10 +46,10 @@ HumanB::HumanB(std::string _name)
 /* ************************************************************************** */
 void HumanB::attack()
 {
-	std::cout << name << " attacks with his " << Weapon::getType << std::endl;
+	std::cout << name << " attacks with his " << weapon->getType() << std::endl;
 }
 
-void HumanB::setWeapon(Weapon weapon)
+void HumanB::setWeapon(Weapon& _weapon)
 {
-
+	weapon = &_weapon;
 }

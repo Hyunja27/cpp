@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:53:53 by spark             #+#    #+#             */
-/*   Updated: 2021/07/07 16:40:31 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/07 20:27:16 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 class Zombie
 {
 	private:
-		std::string name;
+
 	public:
+		std::string name;
+		Zombie();
 		Zombie(std::string _name);
 		~Zombie();
 		/* declare member function */

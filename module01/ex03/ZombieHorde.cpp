@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 19:35:59 by spark             #+#    #+#             */
-/*   Updated: 2021/07/04 20:03:35 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/04 20:06:38 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 ZombieHorde::ZombieHorde(int N) 
 {
 	int i = -1;
-	
+	horde = new Zombie h[N];
+
 	while (++i < N)
 	{
 		std::cout << i + 1 << ". ";

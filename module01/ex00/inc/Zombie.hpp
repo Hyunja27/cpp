@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/04 16:13:00 by spark            ###   ########.fr       */
+/*   Created: 2021/07/04 16:53:53 by spark             #+#    #+#             */
+/*   Updated: 2021/07/07 16:23:36 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pony.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int main(void)
+# include <string>
+# include <iostream>
+
+class Zombie
 {
-    ponyOnTheHeap();
-    ponyOnTheStack();
-    
-    return (0);
-}
+	private:
+		std::string name;
+	public:
+		Zombie(std::string _name);
+		~Zombie();
+		/* declare member function */
+		void announce(void);
+};
+
+Zombie* newZombie(std::string _name);
+void randomChump(std::string _name);
+
+#endif

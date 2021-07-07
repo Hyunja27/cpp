@@ -6,7 +6,7 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 14:53:58 by spark             #+#    #+#             */
-/*   Updated: 2021/07/01 21:42:05 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/07 15:31:47 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,24 @@ void		add_info(int i, Data& contact)
     contact.get_last_name(i);
     std::cout << std::endl << "Enter nick_name." << std::endl << std::endl << "-> ";
     contact.get_nick_name(i);
-    std::cout << std::endl << "Enter login_name." << std::endl << std::endl << "-> ";
-    contact.get_login_name(i);
-    std::cout << std::endl << "Enter postal_address." << std::endl << std::endl << "-> ";
-    contact.get_postal_address(i);
-    std::cout << std::endl << "Enter email_address." << std::endl << std::endl << "-> ";
-    contact.get_email_address(i);
     std::cout << std::endl << "Enter phone_number." << std::endl << std::endl << "-> ";
     contact.get_phone_number(i);
-    std::cout << std::endl << "Enter birthday_date." << std::endl << std::endl << "-> ";
-    contact.get_birthday_date(i);
-    std::cout << std::endl << "Enter favorite_meal." << std::endl << std::endl << "-> ";
-    contact.get_favorite_meal(i);
-    std::cout << std::endl << "Enter underware_color!!!!!!!!!!!!!!!!!!!!!!!!!!!!." << std::endl << std::endl << "-> ";
-    contact.get_underware_color(i);
+    std::cout << std::endl << "Enter darkest_secret." << std::endl << std::endl << "-> ";
+    contact.get_darkest_secret(i);
+    std::cin.clear();
+    return ;
+}
+
+void		add_info_replace(int i, Data& contact)
+{
+    std::cout << std::endl << "Enter first_name." << std::endl << std::endl << "-> ";
+    contact.get_first_name(i);
+    std::cout << std::endl << "Enter last_name." << std::endl << std::endl << "-> ";
+    contact.get_last_name(i);
+    std::cout << std::endl << "Enter nick_name." << std::endl << std::endl << "-> ";
+    contact.get_nick_name(i);
+    std::cout << std::endl << "Enter phone_number." << std::endl << std::endl << "-> ";
+    contact.get_phone_number(i);
     std::cout << std::endl << "Enter darkest_secret." << std::endl << std::endl << "-> ";
     contact.get_darkest_secret(i);
     std::cin.clear();
@@ -73,13 +77,7 @@ void    view_specific_data(int i, Data& contact)
     std::cout << std::endl << std::setw(15) << "first_name." << std::setw(5) << "-> " << contact.show_first_name(i);
     std::cout << std::endl << std::setw(15) << "last_name." << std::setw(5) << "-> " << contact.show_last_name(i);
     std::cout << std::endl << std::setw(15) << "nick_name." << std::setw(5) << "-> " << contact.show_nick_name(i);
-    std::cout << std::endl << std::setw(15) << "login_name." << std::setw(5) << "-> " << contact.show_login_name(i);
-    std::cout << std::endl << std::setw(15) << "postal_address." << std::setw(5) << "-> " << contact.show_postal_address(i);
-    std::cout << std::endl << std::setw(15) << "email_address." << std::setw(5) << "-> " << contact.show_email_address(i);
     std::cout << std::endl << std::setw(15) << "phone_number." << std::setw(5) << "-> " << contact.show_phone_number(i);
-    std::cout << std::endl << std::setw(15) << "birthday_date." << std::setw(5) << "-> " << contact.show_birthday_date(i);
-    std::cout << std::endl << std::setw(15) << "favorite_meal." << std::setw(5) << "-> " << contact.show_favorite_meal(i);
-    std::cout << std::endl << std::setw(15) << "underware_color!!!!!!" << std::setw(5) << "-> " << contact.show_underware_color(i);
     std::cout << std::endl << std::setw(15) << "darkest_secret" << std::setw(5) << "-> " << contact.show_darkest_secret(i);
     std::cin.clear();
 }
@@ -107,6 +105,8 @@ void    select_data(int max, Data& contact)
     }
     else
         view_specific_data(i - 1, contact);
+    std::cin.clear();
+    std::cin.ignore();
     return ;
 }
 
@@ -130,6 +130,7 @@ int main()
 {
     std::string command;
     int index = 0;
+    int re_index = 0;
     Data contact;
     std::cout << std::endl << "Awesome phoneBook Pro MK.2" << std::endl << std::endl;
 
@@ -139,7 +140,13 @@ int main()
         if (command == "ADD")
         {
             if (index == 8)
-                std::cout << std::endl << "contact is Full !!" << std::endl;
+            {
+                add_info_replace(re_index, contact);
+                std::cout << std::endl << "Old contact Replaced !!" << std::endl;
+                re_index++;
+                if (re_index == 8)
+                    re_index = 0;
+            }
             else
             {
                 add_info(index, contact);

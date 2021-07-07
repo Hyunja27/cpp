@@ -6,32 +6,30 @@
 /*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 19:35:59 by spark             #+#    #+#             */
-/*   Updated: 2021/07/04 20:06:38 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/07 16:43:21 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ZombieHorde.hpp"
 #include "Zombie.hpp"
-#include "ZombieEvent.hpp"
 
 /* ************************************************************************** */
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-ZombieHorde::ZombieHorde(int N) 
+Zombie* zombieHorde( int N, std::string name )
 {
 	int i = -1;
-	horde = new Zombie h[N];
-
+	Zombie *Horde[N];
+	
 	while (++i < N)
 	{
-		std::cout << i + 1 << ". ";
-		horde[i] = ZombieEvent::randomChump();
+		Horde[i] = newZombie(name); 
+		Horde[i]->announce();
 	}
-	// i = -1;
-	// while (++i < N)
-	// {
-	// 	std::cout << i + 1 << ". ";
-	// 	delete(horde[i]);
-	// }
+	i = -1;
+	while (++i < N)
+	{
+		delete(Horde[i]); 
+	}
+	return (Horde[0]);
 }

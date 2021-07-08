@@ -72,9 +72,27 @@ void Karen::error(void)
 void Karen::complain( std::string level )
 {
 	Karen K;
-	void(Karen::*debug_ptr)() = &Karen::debug;
-	void(Karen::*info_ptr)() = &Karen::info;
-	void(Karen::*warning_ptr)() = &Karen::warning;
-	void(Karen::*error_ptr)() = &Karen::error;
+	int i = -1;
 
+	void(Karen::*f_ptr[4])() = 
+	{
+		&Karen::debug,
+	 	&Karen::info,
+	 	&Karen::warning,
+	 	&Karen::error 
+	};
+	std::string f_name[4] = 
+	{
+		"debug",
+		"info",
+		"warning",
+		"error"
+	};
+	while (++i < 4)
+	{
+		if (f_name[i] == level)
+		{
+			f_ptr[i] --------;
+		}
+	}
 }

@@ -3,19 +3,26 @@
 
 # include <string>
 # include <iostream>
+# include <cmath>
+#include <iomanip>
 
 class Fixed
 {
 	private:
-		/* declare member variable */
+		float 				f_val;
+		static const int 	float_val = 8;
 	public:
 		Fixed();
-		Fixed(const std::string& /* parameter */, ...);
+		Fixed(const int i_num);
+		Fixed(const float f_num);
 		Fixed(const Fixed& copy);
 		Fixed& operator=(const Fixed& obj);
 		virtual ~Fixed();
-
 		/* declare member function */
+		float getRawBits(void) const;
+		void setRawBits(float const raw);
+		float toFloat( void ) const;
+		int toInt( void ) const;
 };
 
 /* global operator overload */

@@ -1,4 +1,4 @@
-NAME = Zombie
+NAME = Fixed
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,13 +9,12 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		Zombie.cpp\
-		ZombieHorde.cpp\
+		Fixed.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		Zombie.hpp \
+		Fixed.hpp \
 		)
 
 GREEN = \033[32m

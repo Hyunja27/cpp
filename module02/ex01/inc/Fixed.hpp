@@ -9,7 +9,7 @@
 class Fixed
 {
 	private:
-		float 				f_val;
+		int 				modified_int;
 		static const int 	float_val = 8;
 	public:
 		Fixed();
@@ -19,7 +19,7 @@ class Fixed
 		Fixed& operator=(const Fixed& obj);
 		virtual ~Fixed();
 		/* declare member function */
-		float getRawBits(void) const;
+		int getRawBits(void) const;
 		void setRawBits(float const raw);
 		float toFloat( void ) const;
 		int toInt( void ) const;

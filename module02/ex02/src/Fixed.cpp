@@ -19,14 +19,19 @@ Fixed::Fixed()
 Fixed::Fixed(const int i_num)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->f_val = i_num;
+	int tmp;
+
+	tmp = roundf(i_num * (1 << float_val));
+	this->modified_int = tmp;
 }
 
 Fixed::Fixed(const float f_num)
 {
 	std::cout << "Float constructor called" << std::endl;
-	// std::cout << f_num <<  std::endl;
-	this->f_val = f_num;
+	int tmp;
+
+	tmp = roundf(f_num * (1 << float_val));
+	this->modified_int = tmp;
 }
 
 Fixed::Fixed(const Fixed& copy)
@@ -54,7 +59,7 @@ Fixed& Fixed::operator=(const Fixed& obj)
 	if (this == &obj)
 		return (*this);
 	std::cout << "Assignation operator called" << std::endl;
-	this->f_val = obj.f_val;
+	this->modified_int = obj.modified_int;
 	return (*this);
 }
 
@@ -182,32 +187,35 @@ Fixed Fixed::operator--(int)
 
 void Fixed::setRawBits(float const raw)
 {
-	this->f_val = raw;
+	int tmp;
+
+	tmp = raw * (1 << float_val);
+	this->modified_int = tmp;
 }
 
-float Fixed::getRawBits(void) const
+int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->f_val);
+	return (this->modified_int);
 }
 
 float Fixed::toFloat( void ) const
 {
 	float tmp;
 
-	tmp = roundf(this->f_val * (1 << float_val));
+	tmp = roundf(this->modified_int);
 	tmp = tmp / (1 << float_val);
 	return(tmp);
 }
 
 int Fixed::toInt( void ) const
 {
-	return(round(this->f_val));
+	return(roundf(this->modified_int / (1 << float_val)));
 }
 
 Fixed& Fixed::max(Fixed& obj_1, Fixed& obj_2)
 {
-	if (obj_1 > obj_2)
+	if (obj_1.f_val > obj_2.f_val)
 		return (obj_1);
 	else
 		return (obj_2);
@@ -215,7 +223,7 @@ Fixed& Fixed::max(Fixed& obj_1, Fixed& obj_2)
 
 Fixed& Fixed::min(Fixed& obj_1, Fixed& obj_2)
 {
-	if (obj_1 > obj_2)
+	if (obj_1.f_val > obj_2.f_val)
 		return (obj_2);
 	else
 		return (obj_1);
@@ -229,7 +237,7 @@ std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)
 }
 
 /* global overload */
-const Fixed& max(const Fixed& obj_1, const Fixed& obj_2)
+const Fixed& Fixed::max(const Fixed& obj_1, const Fixed& obj_2)
 {
 	if (obj_1.f_val > obj_2.f_val)
 		return (obj_1);
@@ -239,5 +247,8 @@ const Fixed& max(const Fixed& obj_1, const Fixed& obj_2)
 
 const Fixed& min(const Fixed& obj_1, const Fixed& obj_2)
 {
+	Fixed tmp1 = obj_1;
+	Fixed tmp2 = obj_2;
 
+	return (Fixed::min(obj_1, obj_2));
 }

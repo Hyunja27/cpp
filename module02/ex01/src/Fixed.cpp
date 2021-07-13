@@ -19,14 +19,19 @@ Fixed::Fixed()
 Fixed::Fixed(const int i_num)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->f_val = i_num;
+	int tmp;
+
+	tmp = roundf(i_num * (1 << float_val));
+	this->modified_int = tmp;
 }
 
 Fixed::Fixed(const float f_num)
 {
 	std::cout << "Float constructor called" << std::endl;
-	// std::cout << f_num <<  std::endl;
-	this->f_val = f_num;
+	int tmp;
+
+	tmp = roundf(f_num * (1 << float_val));
+	this->modified_int = tmp;
 }
 
 Fixed::Fixed(const Fixed& copy)
@@ -54,7 +59,7 @@ Fixed& Fixed::operator=(const Fixed& obj)
 	if (this == &obj)
 		return (*this);
 	std::cout << "Assignation operator called" << std::endl;
-	this->f_val = obj.f_val;
+	this->modified_int = obj.modified_int;
 	return (*this);
 }
 
@@ -82,27 +87,30 @@ Fixed& Fixed::operator=(const Fixed& obj)
 
 void Fixed::setRawBits(float const raw)
 {
-	this->f_val = raw;
+	int tmp;
+
+	tmp = raw * (1 << float_val);
+	this->modified_int = tmp;
 }
 
-float Fixed::getRawBits(void) const
+int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->f_val);
+	return (this->modified_int);
 }
 
 float Fixed::toFloat( void ) const
 {
 	float tmp;
 
-	tmp = roundf(this->f_val * (1 << float_val));
+	tmp = roundf(this->modified_int);
 	tmp = tmp / (1 << float_val);
 	return(tmp);
 }
 
 int Fixed::toInt( void ) const
 {
-	return(round(this->f_val));
+	return(roundf(this->modified_int / (1 << float_val)));
 }
 
 /* global operator overload */

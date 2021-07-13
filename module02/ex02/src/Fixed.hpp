@@ -4,12 +4,12 @@
 # include <string>
 # include <iostream>
 # include <cmath>
-#include <iomanip>
+# include <iomanip>
 
 class Fixed
 {
 	private:
-		float 				f_val;
+		int 				modified_int;
 		static const int 	float_val = 8;
 	public:
 		Fixed();
@@ -36,12 +36,12 @@ class Fixed
 
 		virtual ~Fixed();
 		/* declare member function */
-		float getRawBits(void) const;
+		int getRawBits(void) const;
 		void setRawBits(float const raw);
 		float toFloat( void ) const;
 		int toInt( void ) const;
-		static Fixed& max(Fixed& obj_1, Fixed& obj_2);
-		static Fixed& min(Fixed& obj_1, Fixed& obj_2);
+		static Fixed& max(const Fixed& obj_1, const Fixed& obj_2);
+		static Fixed& min(const Fixed& obj_1, const Fixed& obj_2);
 };
 
 /* global operator overload */

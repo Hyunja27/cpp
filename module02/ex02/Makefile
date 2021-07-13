@@ -1,4 +1,4 @@
-NAME = HI_THIS_IS_BRAIN
+NAME = Fixed
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,10 +9,12 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
+		Fixed.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
+		Fixed.hpp \
 		)
 
 GREEN = \033[32m

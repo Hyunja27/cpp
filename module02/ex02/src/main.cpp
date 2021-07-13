@@ -3,34 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/07 17:08:07 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/11 20:07:38 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <string>
-# include <iostream>
+#include "Fixed.hpp"
 
-int main(void)
+int main( void ) 
 {
-    std::string string = "HI THIS IS BRAIN";
-    std::string *stringPTR = &string;
-    std::string &stringREF = string;
+    Fixed a;
+    Fixed const b( 10 );
+    Fixed const c( 42.42f );
+    Fixed const d( b );
     
-    std::cout << "[Display the address in memory of the string]" << std::endl;
-    std::cout << &string << std::endl << std::endl;
+    a = Fixed( 1234.4321f );
     
-    std::cout << "[Display the address of the string by using stringPTR and stringREF]" << std::endl;
-    std::cout << "stringPTR: "<< &stringPTR << std::endl;
-    std::cout << "stringREF: "<< &stringREF << std::endl << std::endl;
-
-    std::cout << "[Display string using the pointer]" << std::endl;
-    std::cout << "stringPTR: "<< *stringPTR << std::endl << std::endl;
-
-    std::cout << "[Display using the reference]" << std::endl;
-    std::cout << "stringREF: "<< stringREF << std::endl << std::endl;
-
-    return (0);
+    std::cout << "a is " << a << std::endl;
+    std::cout << "b is " << b << std::endl;
+    std::cout << "c is " << c << std::endl;
+    std::cout << "d is " << d << std::endl;
+    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+    
+    return 0;
 }

@@ -86,7 +86,8 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
+
 void DiamondTrap::whoAmI()
 {
-	std::cout << "My Name is <" << this->_name << "> !" << std::endl;	
+	std::cout << "My Name is <" << this->_name << "> !" << std::endl;
 }

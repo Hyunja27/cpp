@@ -40,15 +40,13 @@ class Fixed
 		void setRawBits(float const raw);
 		float toFloat( void ) const;
 		int toInt( void ) const;
-		static Fixed& max(const Fixed& obj_1, const Fixed& obj_2);
-		static Fixed& min(const Fixed& obj_1, const Fixed& obj_2);
+		static Fixed& max(Fixed& obj_1, Fixed& obj_2);
+		static Fixed& min(Fixed& obj_1, Fixed& obj_2);
+		static const Fixed& max(const Fixed& obj_1, const Fixed& obj_2);
+		static const Fixed& min(const Fixed& obj_1, const Fixed& obj_2);
 };
 
 /* global operator overload */
 std::ostream&	operator<<(std::ostream& out, const Fixed& fixed);
-
-/* global overload */
-const Fixed& max(const Fixed& obj_1, const Fixed& obj_2);
-const Fixed& min(const Fixed& obj_1, const Fixed& obj_2);
 
 #endif

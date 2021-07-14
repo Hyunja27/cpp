@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "cmath": "cpp",
+        "ios": "cpp",
+        "memory": "cpp",
+        "string": "cpp",
+        "type_traits": "cpp"
+    }
+}

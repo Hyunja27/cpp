@@ -1,4 +1,4 @@
-NAME = Fixed
+NAME = Fragtrap
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,12 +9,16 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		Fixed.cpp\
+		Claptrap.cpp\
+		Scavtrap.cpp\
+		Fragtrap.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		Fixed.hpp \
+		Claptrap.hpp \
+		Scavtrap.hpp \
+		Fragtrap.hpp \
 		)
 
 GREEN = \033[32m
@@ -28,7 +32,7 @@ NO_COLOR = \e[0m
 
 all : $(NAME)
 
-$(NAME) : $(SRC)
+$(NAME) :
 	@echo "${PURPLE}[${RED} Makefile${PURPLE} :starting.. ]"
 	@echo "${PURPLE}->making $(NAME).."
 	@$(CC) $(C98_FLAG) $(GCC_FLAG) -I $(INC_DIR) $(SRC) -o $(NAME)

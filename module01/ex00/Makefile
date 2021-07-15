@@ -10,6 +10,8 @@ RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
 		Zombie.cpp\
+		newZombie.cpp\
+		randomChump.cpp\
 		main.cpp\
 		)
 

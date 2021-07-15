@@ -36,7 +36,7 @@ class Claptrap
 		std::string get_Name();
 };
 
-/* global operator overload */
+/* global operator overload */   
 // std::ostream&	operator<<(std::ostream& out, const Claptrap& claptrap);
 
 #endif

@@ -17,6 +17,7 @@ class Scavtrap : virtual public Claptrap
 		Scavtrap& operator=(const Scavtrap& obj);
 		/* declare member function */
 		void guardGate();
+		virtual void attack(std::string const & target);
 };
 
 /* global operator overload */

@@ -20,6 +20,7 @@ class DiamondTrap : public Scavtrap, public Fragtrap
 		DiamondTrap& operator=(const DiamondTrap& obj);
 		~DiamondTrap();
 		void whoAmI();
+		virtual void attack(std::string const & target);
 };
 
 /* global operator overload */

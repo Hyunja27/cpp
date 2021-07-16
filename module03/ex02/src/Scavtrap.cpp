@@ -88,3 +88,8 @@ void Scavtrap::guardGate()
 {
 	std::cout << "ScavTrap <" << this->get_Name() << "> Start to Guard The gate! " << std::endl;
 }
+
+void Scavtrap::attack(std::string const & target)
+{
+	std::cout << "Scav_Style Attack! <" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
+}

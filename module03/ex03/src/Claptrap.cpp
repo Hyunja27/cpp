@@ -127,7 +127,7 @@ void Claptrap::set_Name(std::string str)
 
 void Claptrap::attack(std::string const & target)
 {
-	std::cout << "<" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
+	std::cout << "Clap_Style Attack! <" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
 }
 
 void Claptrap::takeDamage(unsigned int amount)

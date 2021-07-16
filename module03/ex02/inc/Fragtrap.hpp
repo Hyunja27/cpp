@@ -17,6 +17,7 @@ class Fragtrap : public Claptrap
 		~Fragtrap();
 
 		/* declare member function */
+		virtual void attack(std::string const & target);
 		void highFivesGuys(void);
 };
 

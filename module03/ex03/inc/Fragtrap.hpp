@@ -18,6 +18,7 @@ class Fragtrap : virtual public Claptrap
 
 		/* declare member function */
 		void highFivesGuys(void);
+		virtual void attack(std::string const & target);
 };
 
 /* global operator overload */

@@ -6,7 +6,7 @@
 
 class Claptrap
 {
-	private:
+	protected:
 		/* declare member variable */
 		std::string _name;
 		unsigned int Hit_point;
@@ -21,7 +21,7 @@ class Claptrap
 		Claptrap& operator=(const Claptrap& obj);
 		
 		/* declare member function */
-		void attack(std::string const & target);
+		virtual void attack(std::string const & target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 

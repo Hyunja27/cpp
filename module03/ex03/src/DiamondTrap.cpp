@@ -91,3 +91,8 @@ void DiamondTrap::whoAmI()
 {
 	std::cout << "My Name is <" << this->_name << "> !" << std::endl;
 }
+
+void DiamondTrap::attack(std::string const & target)
+{
+	std::cout << "Diamond_Style Attack! <" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
+}

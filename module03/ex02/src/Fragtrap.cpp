@@ -88,3 +88,8 @@ void Fragtrap::highFivesGuys(void)
 {
 	std::cout << "FragTrap <" << this->get_Name() << "> Try to Happy HighFive!! " << std::endl;	
 }
+
+void Fragtrap::attack(std::string const & target)
+{
+	std::cout << "Frag_Style Attack! <" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
+}

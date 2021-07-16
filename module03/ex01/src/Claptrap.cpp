@@ -139,7 +139,7 @@ void Claptrap::takeDamage(unsigned int amount)
 
 void Claptrap::beRepaired(unsigned int amount)
 {
-	std::cout << "<" << this->_name << "> Repaired <" << amount << "> Point !! Hi----ha...! " << std::endl;
+	std::cout << "Clap_Style Attack! <" << this->_name << "> Repaired <" << amount << "> Point !! Hi----ha...! " << std::endl;
 	if (this->Hit_point > 0)
 		this->Hit_point = this->Hit_point + amount;
 }

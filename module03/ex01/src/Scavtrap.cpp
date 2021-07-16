@@ -40,7 +40,7 @@ Scavtrap::Scavtrap(const Scavtrap& copy)
 
 Scavtrap::~Scavtrap()
 {
-	std::cout << "Scavtrap Destroyed. Named <" << this->get_Name() << "> !" << std::endl;
+	std::cout << "Scavtrap Destroyed. Named <" << this->_name << "> !" << std::endl;
 	/* destructor code */
 }
 
@@ -86,5 +86,10 @@ Scavtrap& Scavtrap::operator=(const Scavtrap& obj)
 /* ************************************************************************** */
 void Scavtrap::guardGate()
 {
-	std::cout << "ScavTrap <" << this->get_Name() << "> Start to Guard The gate! " << std::endl;
+	std::cout << "ScavTrap <" << this->_name << "> Start to Guard The gate! " << std::endl;
+}
+
+void Scavtrap::attack(std::string const & target)
+{
+	std::cout << "Scav_Style Attack! <" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
 }

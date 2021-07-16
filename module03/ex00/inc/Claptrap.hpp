@@ -28,6 +28,7 @@ class Claptrap
 		void set_Hit_point(unsigned int num);
 		void set_Energy_point(unsigned int num);
 		void set_Attack_damage(unsigned int num);
+		void set_Name(std::string str);
 		std::string get_Name();
 
 		unsigned int get_Hit_point();

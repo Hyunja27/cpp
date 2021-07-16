@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/08 15:30:31 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/16 09:30:46 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void)
 {
     Karen K;
 
-    std::cout << "[input \"Debug\"] " << std::endl;
+    std::cout << "[input \"debug\"] " << std::endl;
     K.complain("debug");
     std::cout << std::endl;
 

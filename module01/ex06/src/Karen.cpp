@@ -58,7 +58,7 @@ void Karen::info(void)
 void Karen::warning(void)
 {
 	std::cout << 
-	"I think I deserve to have some extra bacon for free. I’ve been coming here for years and you just started working here last month." 
+	"I think I deserve to have some extra bacon for free." << std::endl << "I’ve been coming here for years and you just started working here last month." 
 	<< std::endl;
 }
 

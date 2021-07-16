@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spark <spark@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 14:53:58 by spark             #+#    #+#             */
-/*   Updated: 2021/07/07 15:31:47 by spark            ###   ########.fr       */
+/*   Updated: 2021/07/15 23:39:43 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ std::string		get_new_line()
 	std::cout << std::endl << std::endl
     << "Enter what you want to do : ";
     std::getline(std::cin, command);
+    // if (std::cin.fail() || std::cin.eof())
+    // {
+    //     exit(-1);
+    // }
     std::cin.clear();
     // std::cin.ignore(256, '\n');
     // std::cin >> command;

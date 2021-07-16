@@ -10,17 +10,19 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Enemy::Enemy() {}
-Enemy::Enemy(/* constructor parameter */)
-: /* constructor initialize list */
+Enemy::Enemy() 
 {
-	/* constructor code */
+	this->_type = "none";
+}
+Enemy::Enemy(int hp, std::string const & type)
+{
+	this->_hp = hp;
+	this->_type = type;
 }
 
 Enemy::Enemy(const Enemy& copy)
-: /* copy-constructor initialize list */
 {
-	/* copy-constructor code */
+	this->operator=(copy);
 }
 
 /* ************************************************************************** */
@@ -44,18 +46,27 @@ Enemy& Enemy::operator=(const Enemy& obj)
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const Enemy& enemy)
-{
-	/* ostream output overload code */
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const Enemy& enemy)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
 /* ************************************************************************** */
 
 /* getter code */
+std::string Enemy::getType() const
+{
+	return (this->_type);
+}
+
+int Enemy::getHP() const
+{
+	return (this->_hp);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -72,3 +83,9 @@ operator<<(std::ostream& out, const Enemy& enemy)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
+void Enemy::takeDamage(int damage)
+{
+	this->_hp -= damage;
+	if (this->_hp < 0)
+		this->_hp = 0;
+}

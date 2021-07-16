@@ -11,16 +11,17 @@
 /* ************************************************************************** */
 
 AWeapon::AWeapon() {}
-AWeapon::AWeapon(/* constructor parameter */)
-: /* constructor initialize list */
+AWeapon::AWeapon(std::string const & name, int apcost, int damage)
 {
 	/* constructor code */
+	this->_name = name;
+	this->_apcost = apcost;
+	this->_damage = damage;
 }
 
 AWeapon::AWeapon(const AWeapon& copy)
-: /* copy-constructor initialize list */
 {
-	/* copy-constructor code */
+	this->operator=(copy);
 }
 
 /* ************************************************************************** */
@@ -44,12 +45,12 @@ AWeapon& AWeapon::operator=(const AWeapon& obj)
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const AWeapon& aWeapon)
-{
-	/* ostream output overload code */
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const AWeapon& aWeapon)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
@@ -72,3 +73,16 @@ operator<<(std::ostream& out, const AWeapon& aWeapon)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
+int AWeapon::getAPCost() const
+{
+	return (this->_apcost);
+}
+		
+int AWeapon::getDamage() const
+{
+	return (this->_damage);
+}
+std::string AWeapon::getName() const
+{
+	return (this->_name);
+}

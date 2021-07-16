@@ -10,17 +10,16 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-SuperMutant::SuperMutant() {}
-SuperMutant::SuperMutant(/* constructor parameter */)
-: /* constructor initialize list */
+SuperMutant::SuperMutant() : Enemy(170, "Super Mutant")
 {
-	/* constructor code */
+	std::cout << "Gaaah. Me want smash heads!" << std::endl;
 }
 
-SuperMutant::SuperMutant(const SuperMutant& copy)
-: /* copy-constructor initialize list */
+
+SuperMutant::SuperMutant(const SuperMutant& copy) : Enemy(170, "Super Mutant")
 {
-	/* copy-constructor code */
+	this->operator=(copy);
+	std::cout << "Gaaah. Me want smash heads!" << std::endl;
 }
 
 /* ************************************************************************** */
@@ -30,6 +29,7 @@ SuperMutant::SuperMutant(const SuperMutant& copy)
 SuperMutant::~SuperMutant()
 {
 	/* destructor code */
+	std::cout << "Aaargh..." << std::endl;
 }
 
 /* ************************************************************************** */
@@ -44,12 +44,12 @@ SuperMutant& SuperMutant::operator=(const SuperMutant& obj)
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const SuperMutant& superMutant)
-{
-	/* ostream output overload code */
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const SuperMutant& superMutant)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
@@ -72,3 +72,14 @@ operator<<(std::ostream& out, const SuperMutant& superMutant)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
+void SuperMutant::takeDamage(int damage)
+{
+	int true_damage = 0;
+
+	if (damage > 3)
+		true_damage = damage - 3;
+
+	this->_hp -= true_damage;
+	if (this->_hp < 0)
+		this->_hp = 0;
+}

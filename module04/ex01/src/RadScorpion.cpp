@@ -10,17 +10,16 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-RadScorpion::RadScorpion() {}
-RadScorpion::RadScorpion(/* constructor parameter */)
-: /* constructor initialize list */
+RadScorpion::RadScorpion() : Enemy(80, "RadScorpion")
 {
-	/* constructor code */
+	std::cout << "* click click click *" << std::endl;
 }
 
 RadScorpion::RadScorpion(const RadScorpion& copy)
-: /* copy-constructor initialize list */
+: Enemy(80, "RadScorpion")
 {
-	/* copy-constructor code */
+	std::cout << "* click click click *" << std::endl;
+	this->operator=(copy);
 }
 
 /* ************************************************************************** */
@@ -30,6 +29,7 @@ RadScorpion::RadScorpion(const RadScorpion& copy)
 RadScorpion::~RadScorpion()
 {
 	/* destructor code */
+	std::cout << "* SPROTCH *" << std::endl;
 }
 
 /* ************************************************************************** */
@@ -44,12 +44,12 @@ RadScorpion& RadScorpion::operator=(const RadScorpion& obj)
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const RadScorpion& radScorpion)
-{
-	/* ostream output overload code */
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const RadScorpion& radScorpion)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */

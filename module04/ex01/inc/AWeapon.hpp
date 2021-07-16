@@ -8,14 +8,21 @@ class AWeapon
 {
 	protected:
 		/* declare member variable */
+		std::string _name;
+		int 		_apcost;
+		int 		_damage;
+
 	public:
 		AWeapon();
-		AWeapon(const std::string& /* parameter */, ...);
+		AWeapon(std::string const & name, int apcost, int damage);
 		AWeapon(const AWeapon& copy);
 		AWeapon& operator=(const AWeapon& obj);
 		virtual ~AWeapon();
-
 		/* declare member function */
+		std::string getName() const;
+		int getAPCost() const;
+		int getDamage() const;
+		virtual void attack() const = 0;
 };
 
 /* global operator overload */

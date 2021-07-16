@@ -10,17 +10,14 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-PlasmaRifle::PlasmaRifle() {}
-PlasmaRifle::PlasmaRifle(/* constructor parameter */)
-: /* constructor initialize list */
+PlasmaRifle::PlasmaRifle() : AWeapon("Plasma Rifle", 5, 21)
 {
-	/* constructor code */
 }
 
 PlasmaRifle::PlasmaRifle(const PlasmaRifle& copy)
-: /* copy-constructor initialize list */
+: AWeapon("Plasma Rifle", 5, 21)
 {
-	/* copy-constructor code */
+	this->operator=(copy);
 }
 
 /* ************************************************************************** */
@@ -44,12 +41,12 @@ PlasmaRifle& PlasmaRifle::operator=(const PlasmaRifle& obj)
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const PlasmaRifle& plasmaRifle)
-{
-	/* ostream output overload code */
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const PlasmaRifle& plasmaRifle)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
@@ -72,3 +69,7 @@ operator<<(std::ostream& out, const PlasmaRifle& plasmaRifle)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
+void PlasmaRifle::attack() const
+{
+	std::cout << "* piouuu piouuu piouuu *" << std::endl;
+}

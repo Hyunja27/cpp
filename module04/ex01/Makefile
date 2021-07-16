@@ -1,4 +1,4 @@
-NAME = socerer
+NAME = fallout
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,16 +9,24 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		Peon.cpp\
-		Sorcerer.cpp\
-		Victim.cpp\
+		AWeapon.cpp\
+		Character.cpp\
+		Enemy.cpp\
+		PlasmaRifle.cpp\
+		PowerFist.cpp\
+		RadScorpion.cpp\
+		SuperMutant.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		Peon.hpp\
-		Sorcerer.hpp\
-		Victim.hpp\
+		AWeapon.hpp\
+		Character.hpp\
+		Enemy.hpp\
+		PlasmaRifle.hpp\
+		PowerFist.hpp\
+		RadScorpion.hpp\
+		SuperMutant.hpp\
 		)
 
 GREEN = \033[32m

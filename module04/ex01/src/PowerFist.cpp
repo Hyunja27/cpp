@@ -10,17 +10,14 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-PowerFist::PowerFist() {}
-PowerFist::PowerFist(/* constructor parameter */)
-: /* constructor initialize list */
+PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50)
 {
-	/* constructor code */
 }
 
 PowerFist::PowerFist(const PowerFist& copy)
-: /* copy-constructor initialize list */
+: AWeapon("Power Fist", 8, 50)
 {
-	/* copy-constructor code */
+	this->operator=(copy);
 }
 
 /* ************************************************************************** */
@@ -44,12 +41,12 @@ PowerFist& PowerFist::operator=(const PowerFist& obj)
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const PowerFist& powerFist)
-{
-	/* ostream output overload code */
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const PowerFist& powerFist)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
@@ -72,3 +69,7 @@ operator<<(std::ostream& out, const PowerFist& powerFist)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
+void PowerFist::attack() const
+{
+	std::cout << "* pschhh... SBAM! *" << std::endl;
+}

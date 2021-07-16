@@ -94,5 +94,6 @@ void DiamondTrap::whoAmI()
 
 void DiamondTrap::attack(std::string const & target)
 {
-	std::cout << "Diamond_Style Attack! <" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
+	Scavtrap::attack(target);
+	// std::cout << "Diamond_Style Attack! <" << this->_name << "> attacks <" << target << ">, causing <" << this->Attack_damage << "> points of damage!" << std::endl;
 }

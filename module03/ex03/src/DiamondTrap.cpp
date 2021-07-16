@@ -17,12 +17,12 @@ DiamondTrap::DiamondTrap()
 	this->Fragtrap::set_Attack_damage(30);
 }
 
-DiamondTrap::DiamondTrap(const std::string& string) 
+DiamondTrap::DiamondTrap(const std::string& string) : Claptrap(string + "_clap_name")
 {
 	/* constructor code */
 	std::cout << "name:<" << string << "> Borned !" << std::endl;
 	this->_name = string;
-	this->set_Name(string + "_clap_name");
+	// this->set_Name(string + "_clap_name");
 	this->Fragtrap::set_Hit_point(100);
 	this->Scavtrap::set_Energy_point(50);
 	this->Fragtrap::set_Attack_damage(30);

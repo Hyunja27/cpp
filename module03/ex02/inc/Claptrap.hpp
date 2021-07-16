@@ -21,7 +21,7 @@ class Claptrap
 		Claptrap& operator=(const Claptrap& obj);
 		
 		/* declare member function */
-		virtual void attack(std::string const & target);
+		void attack(std::string const & target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 

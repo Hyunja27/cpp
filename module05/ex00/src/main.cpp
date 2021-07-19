@@ -6,7 +6,7 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/19 16:58:53 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/19 16:59:48 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
         // a.increaseGrade();
         
         Bureaucrat c("Bure_A", 151);
-        Bureaucrat b("Bure_A", -3);
+        Bureaucrat b("Bure_A", -3); 
     }
     catch (std::exception &e)
     {    

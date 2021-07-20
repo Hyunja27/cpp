@@ -1,4 +1,4 @@
-#include "SuperMutant.hpp"
+#include "PresidentialPardonForm.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,42 +10,45 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-SuperMutant::SuperMutant() : Enemy(170, "Super Mutant")
+PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonForm", 25, 5)
+{}
+PresidentialPardonForm::PresidentialPardonForm(const std::string& name)
+: Form(name, 25, 5)
 {
-	std::cout << "Gaaah. Me want smash heads!" << std::endl;
+	/* constructor code */
 }
 
-
-SuperMutant::SuperMutant(const SuperMutant& copy) : Enemy(170, "Super Mutant")
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy)
+: Form("PresidentialPardonForm", 25, 5)
 {
+	/* copy-constructor code */
 	this->operator=(copy);
-	std::cout << "Gaaah. Me want smash heads!" << std::endl;
 }
 
 /* ************************************************************************** */
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-SuperMutant::~SuperMutant()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 	/* destructor code */
-	std::cout << "Aaargh..." << std::endl;
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-SuperMutant& SuperMutant::operator=(const SuperMutant& obj)
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj)
 {
 	if (this == &obj)
 		return (*this);
 	/* overload= code */
+	this->_isSigned = obj._isSigned;
 	return (*this);
 }
 
 // std::ostream&
-// operator<<(std::ostream& out, const SuperMutant& superMutant)
+// operator<<(std::ostream& out, const PresidentialPardonForm& presidentialPardonForm)
 // {
 // 	/* ostream output overload code */
 // 	return (out);
@@ -72,14 +75,7 @@ SuperMutant& SuperMutant::operator=(const SuperMutant& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-void SuperMutant::takeDamage(int damage)
+void PresidentialPardonForm::execute(Bureaucrat const & executor)
 {
-	int true_damage = 0;
-
-	if (damage > 3)
-		true_damage = damage - 3;
-
-	this->_hp -= true_damage;
-	if (this->_hp < 0)
-		this->_hp = 0;
+	std::cout << "<" << executor.getName() << "> has been pardoned by Zafod Beeblebrox." <<std::endl;
 }

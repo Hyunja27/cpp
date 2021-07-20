@@ -1,4 +1,4 @@
-#include "Cure.hpp"
+#include "Intern.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,19 +10,19 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Cure::Cure() : AMateria("cure") {}
+Intern::Intern() {}
 
-Cure::Cure(const Cure& copy) : AMateria("cure")
+Intern::Intern(const Intern& copy)
+: /* copy-constructor initialize list */
 {
 	/* copy-constructor code */
-	this->operator=(copy);
 }
 
 /* ************************************************************************** */
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Cure::~Cure()
+Intern::~Intern()
 {
 	/* destructor code */
 }
@@ -31,7 +31,7 @@ Cure::~Cure()
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Cure& Cure::operator=(const Cure& obj)
+Intern& Intern::operator=(const Intern& obj)
 {
 	if (this == &obj)
 		return (*this);
@@ -39,12 +39,12 @@ Cure& Cure::operator=(const Cure& obj)
 	return (*this);
 }
 
-// std::ostream&
-// operator<<(std::ostream& out, const Cure& cure)
-// {
-// 	/* ostream output overload code */
-// 	return (out);
-// }
+std::ostream&
+operator<<(std::ostream& out, const Intern& intern)
+{
+	/* ostream output overload code */
+	return (out);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
@@ -67,13 +67,3 @@ Cure& Cure::operator=(const Cure& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-AMateria* Cure::clone() const
-{
-	return (new Cure(*this));
-}
-
-void Cure::use(ICharacter& target)
-{
-	this->_xp += 10;
-	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
-}

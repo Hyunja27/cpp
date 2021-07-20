@@ -6,31 +6,80 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/17 01:49:41 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/20 15:38:30 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "AWeapon.hpp"
-#include "Character.hpp"
-#include "Enemy.hpp"
-#include "PlasmaRifle.hpp"
-#include "PowerFist.hpp"
-#include "RadScorpion.hpp"
-#include "SuperMutant.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-int main() 
+int main()
 {
-    Character* me = new Character("me");
-    std::cout << *me;
-    Enemy* b = new RadScorpion();
-    AWeapon* pr = new PlasmaRifle(); AWeapon* pf = new PowerFist();
-    me->equip(pr);
-    std::cout << *me; me->equip(pf);
-    me->attack(b);
-    std::cout << *me; me->equip(pr);
-    std::cout << *me; me->attack(b);
-    std::cout << *me; me->attack(b);
-    std::cout << *me;
+    Bureaucrat a("Bure_A", 10);
+    Bureaucrat b("Bure_B", 100);
+    Bureaucrat c("Bure_C", 140);
+
+    Form test10("test_10", 10, 8);
+    Form test90("test_90", 90, 88);
+    Form test140("test_140", 140, 138);
+        
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << c << std::endl;
+
+    std::cout << test10;
+    std::cout << test90;
+    std::cout << test140;
+    
+    try
+    {
+        b.signForm(test10);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        b.signForm(test90);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        b.signForm(test140);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    std::cout << test10;
+    std::cout << test90;
+    std::cout << test140;
+    
+    
+    // try
+    // {
+    //     Bureaucrat a("Bure_A", 2);
+    //     std::cout << a << std::endl;
+        
+    //     // a.increaseGrade();
+    //     // std::cout << a << std::endl;
+    //     // a.increaseGrade();
+        
+    //     Bureaucrat c("Bure_A", 151);
+    //     Bureaucrat b("Bure_A", -3); 
+    // }
+    // catch (std::exception &e)
+    // {    
+    //     std::cout << e.what() << std::endl;
+    // }
+    
     return 0;
 }

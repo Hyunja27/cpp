@@ -1,4 +1,4 @@
-#include "MateriaSource.hpp"
+#include "Form.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,15 +10,17 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-MateriaSource::MateriaSource() 
-{
-	int i = 0;
-	while(i < 4)
-		this->_learned[i++] = 0;
-	this->_learned_num = 0;
+Form::Form() : _name("Empty"), _signGrade(1), _excuteGrade(1), _isSigned(false)
+{	
 }
 
-MateriaSource::MateriaSource(const MateriaSource& copy)
+Form::Form(const std::string& name, int signGrade, int excuteGrade)
+: _name(name), _signGrade(signGrade), _excuteGrade(excuteGrade), _isSigned(false)
+{
+}
+
+Form::Form(const Form& copy)
+:_name(copy.getName()), _signGrade(copy.getSignGrade()), _excuteGrade(copy.getExecuteGrade()), _isSigned(copy.getisSigned())
 {
 	this->operator=(copy);
 }
@@ -27,47 +29,55 @@ MateriaSource::MateriaSource(const MateriaSource& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-MateriaSource::~MateriaSource()
+Form::~Form()
 {
 	/* destructor code */
-	int i = 0;
-	while(i < 4)
-	{
-		if (this->_learned[i] != 0)
-			delete(this->_learned[i]);
-		i++;
-	}
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-MateriaSource& MateriaSource::operator=(const MateriaSource& obj)
+Form& Form::operator=(const Form& obj)
 {
-	int i = 0;
-
-	this->_learned_num= obj._learned_num;
-	while (i < this->_learned_num)
-	{
-		this->_learned[i] = obj._learned[i]->clone();
-		i++;
-	}
+	if (this == &obj)
+		return (*this);
+	this->_isSigned = obj._isSigned;
 	return (*this);
 }
 
-// std::ostream&
-// operator<<(std::ostream& out, const MateriaSource& materiaSource)
-// {
-// 	/* ostream output overload code */
-// 	return (out);
-// }
+std::ostream&
+operator<<(std::ostream& out, const Form& form)
+{
+	/* ostream output overload code */
+	out << "<" << form.getName() << "> status : <" << std::boolalpha << form.getisSigned() << "> !" << std::endl;
+	return (out);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
 /* ************************************************************************** */
 
 /* getter code */
+std::string Form::getName() const
+{
+	return (this->_name);
+}
+
+int	Form::getSignGrade() const
+{
+	return (this->_signGrade);
+}
+
+int Form::getExecuteGrade() const
+{
+	return (this->_excuteGrade);
+}
+
+bool Form::getisSigned() const
+{
+	return (this->_isSigned);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -84,26 +94,20 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-void MateriaSource::learnMateria(AMateria* m)
+void Form::beSigned(Bureaucrat& obj)
 {
-	if (this->_learned_num == 3 || m == NULL)
-	{
-		throw std::runtime_error("Cannot learnning anything.");
-		return ;
-	}
-	this->_learned[this->_learned_num] = m->clone();
-	this->_learned_num++;
+	if (this->getSignGrade() >= obj.getGrade())
+		this->_isSigned = true;
+	else
+		throw GradeTooLowException();
 }
 
-AMateria* MateriaSource::createMateria(std::string const & type)
+const char* Form::GradeTooHighException::what() const throw()
 {
-	int i = 0;
+	return ("Bureaucrat GradeError: Grade too High!");
+}
 
-	while (i < this->_learned_num)
-	{
-		if (this->_learned[i]->getType() == type)
-			return (this->_learned[i]->clone());
-		i++;
-	}
-	return (NULL);
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat GradeError: Grade too Low!");
 }

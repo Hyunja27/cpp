@@ -6,34 +6,86 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/17 21:16:49 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/20 17:19:44 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-# include "AMateria.hpp"
-# include "Ice.hpp"
-# include "Cure.hpp"
-# include "Character.hpp"
-# include "MateriaSource.hpp"
-# include "ICharacter.hpp"
-# include "IMateriaSource.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
 
 int main()
 {
-    IMateriaSource* src = new MateriaSource(); 
+    srand((unsigned int)time(NULL));
+
+    Bureaucrat a("Bure_A", 10);
+    Bureaucrat b("Bure_B", 100);
+    Bureaucrat c("Bure_C", 140);
     
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    ICharacter* me = new Character("me");
-    AMateria* tmp;
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure"); 
-    me->equip(tmp);
-    ICharacter* bob = new Character("bob");
-    me->use(0, *bob); me->use(1, *bob);
-    delete bob; delete me;
-    delete src;
+    ShrubberyCreationForm test_Sh("shrubbery_01");
+    PresidentialPardonForm test_P("presidential_01");
+    RobotomyRequestForm test_R("robotomy_01");
+        
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << c << std::endl;
+
+    std::cout << test_Sh;
+    std::cout << test_P;
+    std::cout << test_R;
+    
+
+    try
+    {
+        a.signForm(test_Sh);
+        a.excuteForm(test_Sh);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        a.signForm(test_R);
+        a.excuteForm(test_R);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        a.signForm(test_P);
+        a.excuteForm(test_P);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    
+    // try
+    // {
+    //     Bureaucrat a("Bure_A", 2);
+    //     std::cout << a << std::endl;
+        
+    //     // a.increaseGrade();
+    //     // std::cout << a << std::endl;
+    //     // a.increaseGrade();
+        
+    //     Bureaucrat c("Bure_A", 151);
+    //     Bureaucrat b("Bure_A", -3); 
+    // }
+    // catch (std::exception &e)
+    // {    
+    //     std::cout << e.what() << std::endl;
+    // }
+    
     return 0;
 }

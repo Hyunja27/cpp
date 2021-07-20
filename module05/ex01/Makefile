@@ -1,4 +1,4 @@
-NAME = fallout
+NAME = Form
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,24 +9,14 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		AWeapon.cpp\
-		Character.cpp\
-		Enemy.cpp\
-		PlasmaRifle.cpp\
-		PowerFist.cpp\
-		RadScorpion.cpp\
-		SuperMutant.cpp\
+		Bureaucrat.cpp\
+		Form.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		AWeapon.hpp\
-		Character.hpp\
-		Enemy.hpp\
-		PlasmaRifle.hpp\
-		PowerFist.hpp\
-		RadScorpion.hpp\
-		SuperMutant.hpp\
+		Bureaucrat.hpp\
+		Form.hpp\
 		)
 
 GREEN = \033[32m

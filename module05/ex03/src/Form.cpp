@@ -1,4 +1,4 @@
-#include "Squad.hpp"
+#include "Form.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,17 +10,18 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Squad::Squad() 
-{
-	this->all = 0;
-	this->_count = 0;
+Form::Form() : _name("Empty"), _signGrade(1), _excuteGrade(1), _isSigned(false)
+{	
 }
 
-Squad::Squad(const Squad& copy) /* copy-constructor initialize list */
+Form::Form(const std::string& name, int signGrade, int excuteGrade)
+: _name(name), _signGrade(signGrade), _excuteGrade(excuteGrade), _isSigned(false)
 {
-	this->all = 0;
-	this->_count = 0;
-	
+}
+
+Form::Form(const Form& copy)
+:_name(copy.getName()), _signGrade(copy.getSignGrade()), _excuteGrade(copy.getExecuteGrade()), _isSigned(copy.getisSigned())
+{
 	this->operator=(copy);
 }
 
@@ -28,43 +29,55 @@ Squad::Squad(const Squad& copy) /* copy-constructor initialize list */
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Squad::~Squad()
+Form::~Form()
 {
-	int i = 0;
 	/* destructor code */
-	if (this->all != 0)
-	{
-		i = -1;
-		while (++i < this->_count)
-			delete(this->all[i]);
-		delete(all);
-	}
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Squad& Squad::operator=(const Squad& obj)
+Form& Form::operator=(const Form& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_isSigned = obj._isSigned;
 	return (*this);
 }
 
-// std::ostream&
-// operator<<(std::ostream& out, const Squad& squad)
-// {
-// 	/* ostream output overload code */
-// 	return (out);
-// }
+std::ostream&
+operator<<(std::ostream& out, const Form& form)
+{
+	/* ostream output overload code */
+	out << "<" << form.getName() << "> Sign status : <" << std::boolalpha << form.getisSigned() << "> !" << std::endl;
+	return (out);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
 /* ************************************************************************** */
 
 /* getter code */
+std::string Form::getName() const
+{
+	return (this->_name);
+}
+
+int	Form::getSignGrade() const
+{
+	return (this->_signGrade);
+}
+
+int Form::getExecuteGrade() const
+{
+	return (this->_excuteGrade);
+}
+
+bool Form::getisSigned() const
+{
+	return (this->_isSigned);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -81,41 +94,33 @@ Squad& Squad::operator=(const Squad& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-int Squad::getCount() const
+void Form::beSigned(Bureaucrat& obj)
 {
-	return (this->_count);
-}
-
-ISpaceMarine* Squad::getUnit(int num) const
-{
-	return (this->all[num]);
-}
-
-int Squad::push(ISpaceMarine* new_man)
-{
-	if (new_man == 0)
-	{
-		std::cout << "this man is Null man!" << std::endl;
-		return (-1);
-	}
-	if (this->all != 0)
-	{
-		int i = -1;
-		while (this->all[++i])
-			if (new_man == this->all[i])
-			{
-				std::cout << "this man already our Crew!" << std::endl;
-				return (-1);
-			}
-	}
-	this->_count++;
-	if (this->all == 0)
-		this->all = new ISpaceMarine*[this->_count];
+	if (this->getSignGrade() >= obj.getGrade())
+		this->_isSigned = true;
 	else
-	{
-		delete(this->all);
-		this->all = new ISpaceMarine*[this->_count];
-	}
-	this->all[(this->_count - 1)] = new_man;
-	return (this->_count);
+		throw GradeTooLowException();
+}
+
+void Form::beExcuted(Bureaucrat& obj)
+{
+	if (this->getExecuteGrade() >= obj.getGrade())
+		this->execute(obj);
+	else
+		throw GradeTooLowException();
+}
+
+// void execute(Bureaucrat const & executor)
+// {
+
+// }
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat GradeError: Grade too High!");
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat GradeError: Grade too Low!");
 }

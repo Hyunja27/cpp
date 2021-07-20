@@ -1,4 +1,4 @@
-#include "AssaultTerminator.hpp"
+#include "PresidentialPardonForm.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,14 +10,18 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-AssaultTerminator::AssaultTerminator() 
+PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonForm", 25, 5)
+{}
+PresidentialPardonForm::PresidentialPardonForm(const std::string& name)
+: Form(name, 25, 5)
 {
-	std::cout << "* teleports from space *" << std::endl;
+	/* constructor code */
 }
 
-AssaultTerminator::AssaultTerminator(const AssaultTerminator& copy)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy)
+: Form("PresidentialPardonForm", 25, 5)
 {
-	std::cout << "* teleports from space *" << std::endl;
+	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -25,26 +29,26 @@ AssaultTerminator::AssaultTerminator(const AssaultTerminator& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-AssaultTerminator::~AssaultTerminator()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 	/* destructor code */
-	std::cout << "I’ll be back..." << std::endl;
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-AssaultTerminator& AssaultTerminator::operator=(const AssaultTerminator& obj)
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj)
 {
 	if (this == &obj)
 		return (*this);
 	/* overload= code */
+	this->_isSigned = obj._isSigned;
 	return (*this);
 }
 
 // std::ostream&
-// operator<<(std::ostream& out, const AssaultTerminator& assaultTerminator)
+// operator<<(std::ostream& out, const PresidentialPardonForm& presidentialPardonForm)
 // {
 // 	/* ostream output overload code */
 // 	return (out);
@@ -71,25 +75,7 @@ AssaultTerminator& AssaultTerminator::operator=(const AssaultTerminator& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-ISpaceMarine* AssaultTerminator::clone() const
+void PresidentialPardonForm::execute(Bureaucrat const & executor)
 {
-	ISpaceMarine *tmp =	new AssaultTerminator;
-
-	*tmp = *this;
-	return (tmp);
-}
-
-void AssaultTerminator::battleCry() const
-{
-	std::cout << "This code is unclean. PURIFY IT!" << std::endl;
-}
-
-void AssaultTerminator::rangedAttack() const
-{
-	std::cout << "* does nothing *" << std::endl;
-}
-
-void AssaultTerminator::meleeAttack() const
-{
-	std::cout << "* attacks with chainﬁsts *" << std::endl;
+	std::cout << "<" << executor.getName() << "> has been pardoned by Zafod Beeblebrox." <<std::endl;
 }

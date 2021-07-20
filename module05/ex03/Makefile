@@ -1,4 +1,4 @@
-NAME = FinalFantasy
+NAME = Form
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,26 +9,21 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		AMateria.cpp\
-		Ice.cpp\
-		Cure.cpp\
-		Character.cpp\
-		MateriaSource.cpp\
+		Bureaucrat.cpp\
+		PresidentialPardonForm.cpp\
+		RobotomyRequestForm.cpp\
+		ShrubberyCreationForm.cpp\
+		Form.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		AMateria.hpp\
-		Ice.hpp\
-		Cure.hpp\
-		Character.hpp\
-		MateriaSource.hpp\
-		ICharacter.hpp\
-		IMateriaSource.hpp\
+		Bureaucrat.hpp\
+		Form.hpp\
+		PresidentialPardonForm.hpp\
+		RobotomyRequestForm.hpp\
+		ShrubberyCreationForm.hpp\
 		)
-
-
-
 
 GREEN = \033[32m
 PURPLE = \033[35m

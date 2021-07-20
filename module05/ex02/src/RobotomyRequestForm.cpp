@@ -1,4 +1,4 @@
-#include "Enemy.hpp"
+#include "RobotomyRequestForm.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,18 +10,18 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Enemy::Enemy() 
+RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45)
+{}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& name)
+: Form(name, 72, 45)
 {
-	this->_type = "none";
-}
-Enemy::Enemy(int hp, std::string const & type)
-{
-	this->_hp = hp;
-	this->_type = type;
+	/* constructor code */
 }
 
-Enemy::Enemy(const Enemy& copy)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy)
+: Form("RobotomyRequestForm", 72, 45)
 {
+	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -29,7 +29,7 @@ Enemy::Enemy(const Enemy& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Enemy::~Enemy()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
 	/* destructor code */
 }
@@ -38,16 +38,17 @@ Enemy::~Enemy()
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Enemy& Enemy::operator=(const Enemy& obj)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj)
 {
 	if (this == &obj)
 		return (*this);
 	/* overload= code */
+	this->_isSigned = obj._isSigned;
 	return (*this);
 }
 
 // std::ostream&
-// operator<<(std::ostream& out, const Enemy& enemy)
+// operator<<(std::ostream& out, const RobotomyRequestForm& robotomyRequestForm)
 // {
 // 	/* ostream output overload code */
 // 	return (out);
@@ -58,15 +59,6 @@ Enemy& Enemy::operator=(const Enemy& obj)
 /* ************************************************************************** */
 
 /* getter code */
-std::string Enemy::getType() const
-{
-	return (this->_type);
-}
-
-int Enemy::getHP() const
-{
-	return (this->_hp);
-}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -83,9 +75,15 @@ int Enemy::getHP() const
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-void Enemy::takeDamage(int damage)
+void RobotomyRequestForm::execute(Bureaucrat const & executor)
 {
-	this->_hp -= damage;
-	if (this->_hp < 0)
-		this->_hp = 0;
+	if (rand() % 2 == 0)
+	{
+		std::cout << "Drrrrrrr...... DRrrrrrrr....!!" << std::endl;
+		std::cout << "<" << executor.getName() << "> has been robotomize!" << std::endl;
+	}
+	else
+	{
+		std::cout << "<" << executor.getName() << "> robotomizing Failed!" << std::endl;
+	}
 }

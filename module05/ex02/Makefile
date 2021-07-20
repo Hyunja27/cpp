@@ -1,4 +1,4 @@
-NAME = WarHammer
+NAME = Form
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,18 +9,20 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		AssaultTerminator.cpp\
-		Squad.cpp\
-		TacticalMarine.cpp\
+		Bureaucrat.cpp\
+		PresidentialPardonForm.cpp\
+		RobotomyRequestForm.cpp\
+		ShrubberyCreationForm.cpp\
+		Form.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		AssaultTerminator.hpp\
-		Squad.hpp\
-		ISquad.hpp\
-		ISpaceMarine.hpp\
-		TacticalMarine.hpp\
+		Bureaucrat.hpp\
+		Form.hpp\
+		PresidentialPardonForm.hpp\
+		RobotomyRequestForm.hpp\
+		ShrubberyCreationForm.hpp\
 		)
 
 GREEN = \033[32m

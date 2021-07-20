@@ -1,4 +1,4 @@
-#include "AMateria.hpp"
+#include "Form.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,58 +10,74 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-AMateria::AMateria() {}
-AMateria::AMateria(const std::string& type)
-{
-	this->_xp = 0;
-	if (type == "Ice" || type == "ICE")
-		this->_type = "ice";
-	else if (type == "Cure" || type == "CURE")
-		this->_type = "cure";
-	else
-		this->_type = type;
+Form::Form() : _name("Empty"), _signGrade(1), _excuteGrade(1), _isSigned(false)
+{	
 }
 
-AMateria::AMateria(const AMateria& copy)
+Form::Form(const std::string& name, int signGrade, int excuteGrade)
+: _name(name), _signGrade(signGrade), _excuteGrade(excuteGrade), _isSigned(false)
 {
-	this->_xp = copy._xp;
-	this->_type = copy._type;
+}
+
+Form::Form(const Form& copy)
+:_name(copy.getName()), _signGrade(copy.getSignGrade()), _excuteGrade(copy.getExecuteGrade()), _isSigned(copy.getisSigned())
+{
+	this->operator=(copy);
 }
 
 /* ************************************************************************** */
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-AMateria::~AMateria()
+Form::~Form()
 {
 	/* destructor code */
-
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-AMateria& AMateria::operator=(const AMateria& obj)
+Form& Form::operator=(const Form& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_isSigned = obj._isSigned;
 	return (*this);
 }
 
-// std::ostream&
-// operator<<(std::ostream& out, const AMateria& aMateria)
-// {
-// 	/* ostream output overload code */
-// 	return (out);
-// }
+std::ostream&
+operator<<(std::ostream& out, const Form& form)
+{
+	/* ostream output overload code */
+	out << "<" << form.getName() << "> Sign status : <" << std::boolalpha << form.getisSigned() << "> !" << std::endl;
+	return (out);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
 /* ************************************************************************** */
 
 /* getter code */
+std::string Form::getName() const
+{
+	return (this->_name);
+}
+
+int	Form::getSignGrade() const
+{
+	return (this->_signGrade);
+}
+
+int Form::getExecuteGrade() const
+{
+	return (this->_excuteGrade);
+}
+
+bool Form::getisSigned() const
+{
+	return (this->_isSigned);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -78,14 +94,33 @@ AMateria& AMateria::operator=(const AMateria& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-std::string const & AMateria::getType() const
+void Form::beSigned(Bureaucrat& obj)
 {
-	return (_type);
+	if (this->getSignGrade() >= obj.getGrade())
+		this->_isSigned = true;
+	else
+		throw GradeTooLowException();
 }
 
-// AMateria* AMateria::clone() const
+void Form::beExcuted(Bureaucrat& obj)
+{
+	if (this->getExecuteGrade() >= obj.getGrade())
+		this->execute(obj);
+	else
+		throw GradeTooLowException();
+}
+
+// void execute(Bureaucrat const & executor)
 // {
-// 	return (new AMateria(*this));
+
 // }
 
-// void use(ICharacter& target);
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat GradeError: Grade too High!");
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat GradeError: Grade too Low!");
+}

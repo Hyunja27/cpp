@@ -1,4 +1,4 @@
-#include "Ice.hpp"
+#include "RobotomyRequestForm.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,11 +10,18 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Ice::Ice() : AMateria("ice")
+RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45)
 {}
-
-Ice::Ice(const Ice& copy) : AMateria("ice")
+RobotomyRequestForm::RobotomyRequestForm(const std::string& name)
+: Form(name, 72, 45)
 {
+	/* constructor code */
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy)
+: Form("RobotomyRequestForm", 72, 45)
+{
+	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -22,7 +29,7 @@ Ice::Ice(const Ice& copy) : AMateria("ice")
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Ice::~Ice()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
 	/* destructor code */
 }
@@ -31,16 +38,17 @@ Ice::~Ice()
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Ice& Ice::operator=(const Ice& obj)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj)
 {
 	if (this == &obj)
 		return (*this);
 	/* overload= code */
+	this->_isSigned = obj._isSigned;
 	return (*this);
 }
 
 // std::ostream&
-// operator<<(std::ostream& out, const Ice& ice)
+// operator<<(std::ostream& out, const RobotomyRequestForm& robotomyRequestForm)
 // {
 // 	/* ostream output overload code */
 // 	return (out);
@@ -67,13 +75,15 @@ Ice& Ice::operator=(const Ice& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-AMateria* Ice::clone() const
+void RobotomyRequestForm::execute(Bureaucrat const & executor)
 {
-	return (new Ice(*this));
-}
-
-void Ice::use(ICharacter& target)
-{
-	this->_xp += 10;
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	if (rand() % 2 == 0)
+	{
+		std::cout << "Drrrrrrr...... DRrrrrrrr....!!" << std::endl;
+		std::cout << "<" << executor.getName() << "> has been robotomize!" << std::endl;
+	}
+	else
+	{
+		std::cout << "<" << executor.getName() << "> robotomizing Failed!" << std::endl;
+	}
 }

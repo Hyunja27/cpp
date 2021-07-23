@@ -6,17 +6,17 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/20 17:19:44 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/21 17:05:45 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "Intern.hpp"
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-
 
 int main()
 {
@@ -25,24 +25,34 @@ int main()
     Bureaucrat a("Bure_A", 10);
     Bureaucrat b("Bure_B", 100);
     Bureaucrat c("Bure_C", 140);
+
+    Intern a_intern;
     
-    ShrubberyCreationForm test_Sh("shrubbery_01");
-    PresidentialPardonForm test_P("presidential_01");
-    RobotomyRequestForm test_R("robotomy_01");
-        
+    Form * test_Sh = a_intern.makeForm("shrubbery creation", "shh_kim");
+    Form * test_P = a_intern.makeForm("presidential request", "p_kim");
+    Form * test_R = a_intern.makeForm("robotomy request", "r_kim");
+    try
+    {
+        Form * test_fail_1 = a_intern.makeForm("robotomy creation", "fail");
+        (void)test_fail_1;
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << c << std::endl;
 
-    std::cout << test_Sh;
-    std::cout << test_P;
-    std::cout << test_R;
+    std::cout << *test_Sh;
+    std::cout << *test_P;
+    std::cout << *test_R;
     
 
     try
     {
-        a.signForm(test_Sh);
-        a.excuteForm(test_Sh);
+        a.signForm(*test_Sh);
+        a.excuteForm(*test_Sh);
     }
     catch(const std::exception& e)
     {
@@ -51,8 +61,8 @@ int main()
 
     try
     {
-        a.signForm(test_R);
-        a.excuteForm(test_R);
+        a.signForm(*test_R);
+        a.excuteForm(*test_R);
     }
     catch(const std::exception& e)
     {
@@ -61,8 +71,8 @@ int main()
 
     try
     {
-        a.signForm(test_P);
-        a.excuteForm(test_P);
+        a.signForm(*test_P);
+        a.excuteForm(*test_P);
     }
     catch(const std::exception& e)
     {

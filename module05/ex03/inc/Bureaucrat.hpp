@@ -38,7 +38,6 @@ class Bureaucrat
 			public:
 				virtual	const char*	what() const throw();
 		};
-
 };
 
 /* global operator overload */

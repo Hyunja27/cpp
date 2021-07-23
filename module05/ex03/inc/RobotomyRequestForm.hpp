@@ -9,9 +9,10 @@ class RobotomyRequestForm : public Form
 {
 	private:
 		/* declare member variable */
+		std::string _target;
 	public:
 		RobotomyRequestForm();
-		RobotomyRequestForm(const std::string& name);
+		RobotomyRequestForm(const std::string& _target);
 		RobotomyRequestForm(const RobotomyRequestForm& copy);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 		virtual ~RobotomyRequestForm();

@@ -1,4 +1,4 @@
-NAME = WarHammer
+NAME = brain
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,18 +9,18 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		AssaultTerminator.cpp\
-		Squad.cpp\
-		TacticalMarine.cpp\
+		Animal.cpp\
+		Cat.cpp\
+		Dog.cpp\
+		Brain.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		AssaultTerminator.hpp\
-		Squad.hpp\
-		ISquad.hpp\
-		ISpaceMarine.hpp\
-		TacticalMarine.hpp\
+		Animal.hpp\
+		Cat.hpp\
+		Dog.hpp\
+		Brain.hpp\
 		)
 
 GREEN = \033[32m

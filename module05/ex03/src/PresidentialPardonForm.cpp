@@ -12,10 +12,11 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonForm", 25, 5)
 {}
-PresidentialPardonForm::PresidentialPardonForm(const std::string& name)
-: Form(name, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
+: Form("PresidentialPardonForm", 25, 5)
 {
 	/* constructor code */
+	this->_target = target;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy)
@@ -44,6 +45,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 		return (*this);
 	/* overload= code */
 	this->_isSigned = obj._isSigned;
+	this->_target = obj._target;
 	return (*this);
 }
 
@@ -77,5 +79,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 /* ************************************************************************** */
 void PresidentialPardonForm::execute(Bureaucrat const & executor)
 {
-	std::cout << "<" << executor.getName() << "> has been pardoned by Zafod Beeblebrox." <<std::endl;
+	if (executor.getGrade() > this->getExecuteGrade())
+		throw GradeTooLowException();
+	std::cout << "<" << this->_target << "> has been pardoned by Zafod Beeblebrox." <<std::endl;
 }

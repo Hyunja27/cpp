@@ -104,6 +104,9 @@ void Form::beSigned(Bureaucrat& obj)
 
 void Form::beExcuted(Bureaucrat& obj)
 {
+	if (this->_isSigned == false)
+		throw NotSignedException();
+
 	if (this->getExecuteGrade() >= obj.getGrade())
 		this->execute(obj);
 	else
@@ -123,4 +126,9 @@ const char* Form::GradeTooHighException::what() const throw()
 const char* Form::GradeTooLowException::what() const throw()
 {
 	return ("Bureaucrat GradeError: Grade too Low!");
+}
+
+const char* Form::NotSignedException::what() const throw()
+{
+	return ("Sign permission Error: This Form is Nor signed yet!");
 }

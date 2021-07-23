@@ -1,4 +1,4 @@
-NAME = socerer
+NAME = animal
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,16 +9,20 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		Peon.cpp\
-		Sorcerer.cpp\
-		Victim.cpp\
+		Animal.cpp\
+		WrongAnimal.cpp\
+		Cat.cpp\
+		WrongCat.cpp\
+		Dog.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		Peon.hpp\
-		Sorcerer.hpp\
-		Victim.hpp\
+		Animal.hpp\
+		WrongAnimal.hpp\
+		Cat.hpp\
+		WrongCat.hpp\
+		Dog.hpp\
 		)
 
 GREEN = \033[32m

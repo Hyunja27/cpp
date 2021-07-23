@@ -12,10 +12,11 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45)
 {}
-RobotomyRequestForm::RobotomyRequestForm(const std::string& name)
-: Form(name, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
+: Form("RobotomyRequestForm", 72, 45)
 {
 	/* constructor code */
+	this->_target = target;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy)
@@ -44,6 +45,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 		return (*this);
 	/* overload= code */
 	this->_isSigned = obj._isSigned;
+	this->_target = obj._target;
 	return (*this);
 }
 
@@ -77,13 +79,15 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 /* ************************************************************************** */
 void RobotomyRequestForm::execute(Bureaucrat const & executor)
 {
+	if (executor.getGrade() > this->getExecuteGrade())
+		throw GradeTooLowException();
 	if (rand() % 2 == 0)
 	{
 		std::cout << "Drrrrrrr...... DRrrrrrrr....!!" << std::endl;
-		std::cout << "<" << executor.getName() << "> has been robotomize!" << std::endl;
+		std::cout << "<" << this->_target << "> has been robotomize!" << std::endl;
 	}
 	else
 	{
-		std::cout << "<" << executor.getName() << "> robotomizing Failed!" << std::endl;
+		std::cout << "<" << this->_target << "> robotomizing Failed!" << std::endl;
 	}
 }

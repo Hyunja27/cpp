@@ -1,4 +1,4 @@
-#include "Victim.hpp"
+#include "Enemy.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,18 +10,18 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Victim::Victim() {}
-Victim::Victim(const std::string& _name)
+Enemy::Enemy() 
 {
-	/* constructor code */
-	this->_name = _name;
-	std::cout << "Some random victim called " << this->_name << " just appeared!" << std::endl;
+	this->_type = "none";
+}
+Enemy::Enemy(int hp, std::string const & type)
+{
+	this->_hp = hp;
+	this->_type = type;
 }
 
-
-Victim::Victim(const Victim& copy)
+Enemy::Enemy(const Enemy& copy)
 {
-	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -29,40 +29,44 @@ Victim::Victim(const Victim& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Victim::~Victim()
+Enemy::~Enemy()
 {
 	/* destructor code */
-	std::cout << "Victim " << _name << " just died for no apparent reason!" << std::endl;
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Victim& Victim::operator=(const Victim& obj)
+Enemy& Enemy::operator=(const Enemy& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_hp= obj._hp;
+	this->_type = obj._type;
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const Victim& victim)
-{
-	/* ostream output overload code */
-	out << "I'm " << victim.get_name() << "  and I like otters!" << std::endl;
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const Enemy& enemy)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
 /* ************************************************************************** */
 
 /* getter code */
-std::string Victim::get_name(void) const
+std::string Enemy::getType() const
 {
-	return (this->_name);
+	return (this->_type);
+}
+
+int Enemy::getHP() const
+{
+	return (this->_hp);
 }
 
 /* ************************************************************************** */
@@ -80,7 +84,9 @@ std::string Victim::get_name(void) const
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-void Victim::getPolymorphed() const
+void Enemy::takeDamage(int damage)
 {
-	std::cout << this->_name << " has been turned into a cute little sheep!" << std::endl;
+	this->_hp -= damage;
+	if (this->_hp < 0)
+		this->_hp = 0;
 }

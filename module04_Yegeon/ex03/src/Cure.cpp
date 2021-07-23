@@ -1,4 +1,4 @@
-#include "Enemy.hpp"
+#include "Cure.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,18 +10,11 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Enemy::Enemy() 
-{
-	this->_type = "none";
-}
-Enemy::Enemy(int hp, std::string const & type)
-{
-	this->_hp = hp;
-	this->_type = type;
-}
+Cure::Cure() : AMateria("cure") {}
 
-Enemy::Enemy(const Enemy& copy)
+Cure::Cure(const Cure& copy) : AMateria("cure")
 {
+	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -29,7 +22,7 @@ Enemy::Enemy(const Enemy& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Enemy::~Enemy()
+Cure::~Cure()
 {
 	/* destructor code */
 }
@@ -38,16 +31,17 @@ Enemy::~Enemy()
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Enemy& Enemy::operator=(const Enemy& obj)
+Cure& Cure::operator=(const Cure& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_type = obj._type;
+	this->_xp = obj._xp;
 	return (*this);
 }
 
 // std::ostream&
-// operator<<(std::ostream& out, const Enemy& enemy)
+// operator<<(std::ostream& out, const Cure& cure)
 // {
 // 	/* ostream output overload code */
 // 	return (out);
@@ -58,15 +52,6 @@ Enemy& Enemy::operator=(const Enemy& obj)
 /* ************************************************************************** */
 
 /* getter code */
-std::string Enemy::getType() const
-{
-	return (this->_type);
-}
-
-int Enemy::getHP() const
-{
-	return (this->_hp);
-}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -83,9 +68,13 @@ int Enemy::getHP() const
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-void Enemy::takeDamage(int damage)
+AMateria* Cure::clone() const
 {
-	this->_hp -= damage;
-	if (this->_hp < 0)
-		this->_hp = 0;
+	return (new Cure(*this));
+}
+
+void Cure::use(ICharacter& target)
+{
+	this->_xp += 10;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

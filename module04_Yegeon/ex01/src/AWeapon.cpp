@@ -1,4 +1,4 @@
-#include "Intern.hpp"
+#include "AWeapon.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,19 +10,25 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Intern::Intern() {}
-
-Intern::Intern(const Intern& copy)
-: /* copy-constructor initialize list */
+AWeapon::AWeapon() {}
+AWeapon::AWeapon(std::string const & name, int apcost, int damage)
 {
-	/* copy-constructor code */
+	/* constructor code */
+	this->_name = name;
+	this->_apcost = apcost;
+	this->_damage = damage;
+}
+
+AWeapon::AWeapon(const AWeapon& copy)
+{
+	this->operator=(copy);
 }
 
 /* ************************************************************************** */
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Intern::~Intern()
+AWeapon::~AWeapon()
 {
 	/* destructor code */
 }
@@ -31,20 +37,22 @@ Intern::~Intern()
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Intern& Intern::operator=(const Intern& obj)
+AWeapon& AWeapon::operator=(const AWeapon& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_name = obj._name;
+	this->_apcost = obj._apcost;
+	this->_damage = obj._damage;
 	return (*this);
 }
 
-std::ostream&
-operator<<(std::ostream& out, const Intern& intern)
-{
-	/* ostream output overload code */
-	return (out);
-}
+// std::ostream&
+// operator<<(std::ostream& out, const AWeapon& aWeapon)
+// {
+// 	/* ostream output overload code */
+// 	return (out);
+// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
@@ -67,3 +75,16 @@ operator<<(std::ostream& out, const Intern& intern)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
+int AWeapon::getAPCost() const
+{
+	return (this->_apcost);
+}
+		
+int AWeapon::getDamage() const
+{
+	return (this->_damage);
+}
+std::string AWeapon::getName() const
+{
+	return (this->_name);
+}

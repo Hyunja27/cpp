@@ -54,7 +54,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_name= obj._name;
 	return (*this);
 }
 

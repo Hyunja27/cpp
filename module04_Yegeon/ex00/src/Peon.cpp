@@ -1,4 +1,5 @@
-#include "AWeapon.hpp"
+#include "Peon.hpp"
+#include "Victim.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,17 +11,16 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-AWeapon::AWeapon() {}
-AWeapon::AWeapon(std::string const & name, int apcost, int damage)
+Peon::Peon(const std::string& _name)
+: Victim(_name)
 {
-	/* constructor code */
-	this->_name = name;
-	this->_apcost = apcost;
-	this->_damage = damage;
+	std::cout << "Zog zog." << std::endl;
 }
 
-AWeapon::AWeapon(const AWeapon& copy)
+Peon::Peon(const Peon& copy)
+: Victim(copy.get_name())
 {
+	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -28,35 +28,29 @@ AWeapon::AWeapon(const AWeapon& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-AWeapon::~AWeapon()
+Peon::~Peon()
 {
 	/* destructor code */
+	std::cout << "Bleuark..." << std::endl;
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-AWeapon& AWeapon::operator=(const AWeapon& obj)
+Peon& Peon::operator=(const Peon& obj)
 {
+	Victim::operator=(obj);
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
 	return (*this);
 }
-
-// std::ostream&
-// operator<<(std::ostream& out, const AWeapon& aWeapon)
-// {
-// 	/* ostream output overload code */
-// 	return (out);
-// }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
 /* ************************************************************************** */
 
-/* getter code */
+
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -73,16 +67,8 @@ AWeapon& AWeapon::operator=(const AWeapon& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-int AWeapon::getAPCost() const
+
+void Peon::getPolymorphed() const
 {
-	return (this->_apcost);
-}
-		
-int AWeapon::getDamage() const
-{
-	return (this->_damage);
-}
-std::string AWeapon::getName() const
-{
-	return (this->_name);
+	std::cout << this->get_name() << " has been turned into a pink pony!" << std::endl;
 }

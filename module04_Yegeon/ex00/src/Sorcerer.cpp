@@ -1,5 +1,4 @@
-#include "Peon.hpp"
-#include "Victim.hpp"
+#include "Sorcerer.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -11,16 +10,17 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Peon::Peon(const std::string& _name)
-: Victim(_name)
+Sorcerer::Sorcerer() {}
+Sorcerer::Sorcerer(const std::string& _name, const std::string& _title)
 {
-	std::cout << "Zog zog." << std::endl;
+	/* constructor code */
+	this->_name = _name;
+	this->_title = _title;
+	std::cout << _name << ", " << _title << ", is born!" << std::endl;
 }
 
-Peon::Peon(const Peon& copy)
-: Victim(copy.get_name())
+Sorcerer::Sorcerer(const Sorcerer& copy)
 {
-	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -28,29 +28,48 @@ Peon::Peon(const Peon& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Peon::~Peon()
+Sorcerer::~Sorcerer()
 {
 	/* destructor code */
-	std::cout << "Bleuark..." << std::endl;
+	std::cout << _name << ", " << _title << ", is dead. Consequences will never be the same!" << std::endl;
+
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Peon& Peon::operator=(const Peon& obj)
+Sorcerer& Sorcerer::operator=(const Sorcerer& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_name = obj._name;
+	this->_title = obj._title;
 	return (*this);
+}
+
+std::ostream&
+operator<<(std::ostream& out, const Sorcerer& sorcerer)
+{
+	/* ostream output overload code */
+	out << "I am " << sorcerer.get_name() << ", " << sorcerer.get_name() << ", and I like ponies!" << std::endl;
+	return (out);
 }
 
 /* ************************************************************************** */
 /* --------------------------------- GETTER --------------------------------- */
 /* ************************************************************************** */
 
+/* getter code */
+std::string Sorcerer::get_name(void) const
+{
+	return (this->_name);
+}
 
+std::string Sorcerer::get_title(void) const
+{
+	return (this->_title);
+}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -67,8 +86,7 @@ Peon& Peon::operator=(const Peon& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-
-void Peon::getPolymorphed() const
+void Sorcerer::polymorph(Victim const &target) const
 {
-	std::cout << this->get_name() << " has been turned into a pink pony!" << std::endl;
+	target.getPolymorphed();
 }

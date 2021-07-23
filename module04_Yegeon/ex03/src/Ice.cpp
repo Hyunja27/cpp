@@ -35,7 +35,6 @@ Ice& Ice::operator=(const Ice& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
 	return (*this);
 }
 

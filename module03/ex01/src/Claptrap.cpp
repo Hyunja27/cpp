@@ -52,7 +52,10 @@ Claptrap& Claptrap::operator=(const Claptrap& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_name = obj._name;
+	this->Hit_point= obj.Hit_point;
+	this->Energy_point = obj.Energy_point;
+	this->Attack_damage = obj.Attack_damage;
 	return (*this);
 }
 

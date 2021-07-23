@@ -1,4 +1,4 @@
-#include "Character.hpp"
+#include "Victim.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,21 +10,18 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Character::Character() 
+Victim::Victim() {}
+Victim::Victim(const std::string& _name)
 {
-	this->_name = "Noname";
-	this->_ap = 40;
-	this->Primary_weapon = 0;
-}
-Character::Character(std::string const & name)
-{
-	this->_name = name;
-	this->_ap = 40;
-	this->Primary_weapon = 0;
+	/* constructor code */
+	this->_name = _name;
+	std::cout << "Some random victim called " << this->_name << " just appeared!" << std::endl;
 }
 
-Character::Character(const Character& copy)
+
+Victim::Victim(const Victim& copy)
 {
+	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -32,31 +29,29 @@ Character::Character(const Character& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Character::~Character()
+Victim::~Victim()
 {
 	/* destructor code */
+	std::cout << "Victim " << _name << " just died for no apparent reason!" << std::endl;
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Character& Character::operator=(const Character& obj)
+Victim& Victim::operator=(const Victim& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_name = obj._name;
 	return (*this);
 }
 
 std::ostream&
-operator<<(std::ostream& out, const Character& character)
+operator<<(std::ostream& out, const Victim& victim)
 {
 	/* ostream output overload code */
-	if (character.getWeapon() == 0)
-		std::cout << character.getName() << " has AP_NUMBER " << character.getAP()  << " and is unarmed" << std::endl;
-	else
-		out << character.getName() << " has AP_NUMBER " << character.getAP() << " and wields a " << character.getWeapon()->getName() << std::endl;
+	out << "I'm " << victim.get_name() << "  and I like otters!" << std::endl;
 	return (out);
 }
 
@@ -65,19 +60,9 @@ operator<<(std::ostream& out, const Character& character)
 /* ************************************************************************** */
 
 /* getter code */
-std::string Character::getName() const
+std::string Victim::get_name(void) const
 {
 	return (this->_name);
-}
-
-int Character::getAP() const
-{
-	return (this->_ap);
-}
-
-AWeapon* Character::getWeapon() const
-{
-	return (this->Primary_weapon);
 }
 
 /* ************************************************************************** */
@@ -95,29 +80,7 @@ AWeapon* Character::getWeapon() const
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-void Character::recoverAP()
+void Victim::getPolymorphed() const
 {
-	this->_ap += 10;
-	if (this->_ap > 40)
-		this->_ap = 40;
-}
-
-void Character::equip(AWeapon* weapon)
-{
-	// if (this->Primary_weapon != 0)
-	this->Primary_weapon = weapon;
-	// else
-	// 	std::cout << this->_name << " has AP_NUMBER " << this->_ap << " and is unarmed" << std::endl;
-}
-
-void Character::attack(Enemy* enemy)
-{
-	if (this->Primary_weapon == 0 || ((this->_ap) < this->Primary_weapon->getAPCost()))
-		return ;
-	std::cout << this->_name << " attacks " << enemy->getType() << " with a " << this->Primary_weapon->getName() << std::endl;
-	this->Primary_weapon->attack();
-	enemy->takeDamage(this->Primary_weapon->getDamage());
-	this->_ap -= this->Primary_weapon->getAPCost();
-	if (enemy->getHP() <= 0)
-		delete(enemy);
+	std::cout << this->_name << " has been turned into a cute little sheep!" << std::endl;
 }

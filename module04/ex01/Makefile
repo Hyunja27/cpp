@@ -1,4 +1,4 @@
-NAME = fallout
+NAME = brain
 
 SRC_DIR = src
 INC_DIR = inc
@@ -9,24 +9,18 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		AWeapon.cpp\
-		Character.cpp\
-		Enemy.cpp\
-		PlasmaRifle.cpp\
-		PowerFist.cpp\
-		RadScorpion.cpp\
-		SuperMutant.cpp\
+		Animal.cpp\
+		Cat.cpp\
+		Dog.cpp\
+		Brain.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		AWeapon.hpp\
-		Character.hpp\
-		Enemy.hpp\
-		PlasmaRifle.hpp\
-		PowerFist.hpp\
-		RadScorpion.hpp\
-		SuperMutant.hpp\
+		Animal.hpp\
+		Cat.hpp\
+		Dog.hpp\
+		Brain.hpp\
 		)
 
 GREEN = \033[32m

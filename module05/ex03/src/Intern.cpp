@@ -1,4 +1,4 @@
-#include "Sorcerer.hpp"
+#include "Intern.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,17 +10,11 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Sorcerer::Sorcerer() {}
-Sorcerer::Sorcerer(const std::string& _name, const std::string& _title)
-{
-	/* constructor code */
-	this->_name = _name;
-	this->_title = _title;
-	std::cout << _name << ", " << _title << ", is born!" << std::endl;
-}
+Intern::Intern() {}
 
-Sorcerer::Sorcerer(const Sorcerer& copy)
+Intern::Intern(const Intern& copy)
 {
+	/* copy-constructor code */
 	this->operator=(copy);
 }
 
@@ -28,30 +22,34 @@ Sorcerer::Sorcerer(const Sorcerer& copy)
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Sorcerer::~Sorcerer()
+Intern::~Intern()
 {
 	/* destructor code */
-	std::cout << _name << ", " << _title << ", is dead. Consequences will never be the same!" << std::endl;
-
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Sorcerer& Sorcerer::operator=(const Sorcerer& obj)
+Intern& Intern::operator=(const Intern& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	int i = -1;
+	this->sh_PTR = obj.sh_PTR;
+	this->pres_PTR = obj.pres_PTR;
+	this->rob_PTR = obj.rob_PTR;
+	while(++i < 3)
+		this->form_book[i] = obj.form_book[i];
 	return (*this);
 }
 
 std::ostream&
-operator<<(std::ostream& out, const Sorcerer& sorcerer)
+operator<<(std::ostream& out, const Intern& intern)
 {
 	/* ostream output overload code */
-	out << "I am " << sorcerer.get_name() << ", " << sorcerer.get_name() << ", and I like ponies!" << std::endl;
+	out << "Intern creates <" << "Form?" << ">";
+	(void)intern;
 	return (out);
 }
 
@@ -60,15 +58,6 @@ operator<<(std::ostream& out, const Sorcerer& sorcerer)
 /* ************************************************************************** */
 
 /* getter code */
-std::string Sorcerer::get_name(void) const
-{
-	return (this->_name);
-}
-
-std::string Sorcerer::get_title(void) const
-{
-	return (this->_title);
-}
 
 /* ************************************************************************** */
 /* --------------------------------- SETTER --------------------------------- */
@@ -85,7 +74,46 @@ std::string Sorcerer::get_title(void) const
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-void Sorcerer::polymorph(Victim const &target) const
+Form* Intern::makeForm(const std::string& _form_name, const std::string& _target)
 {
-	target.getPolymorphed();
+	int i = -1;
+	int j = 0;
+	int	ok = 0;
+
+	sh_PTR = new ShrubberyCreationForm(_target);
+	pres_PTR = new PresidentialPardonForm(_target);
+	rob_PTR = new RobotomyRequestForm(_target);
+
+	form_book[0] = sh_PTR;
+	form_book[1] = pres_PTR;
+	form_book[2] = rob_PTR;
+
+	std::string form_kind[4] = 
+	{
+		"shrubbery creation",
+		"presidential request",
+		"robotomy request"
+	};
+
+	while (++i < 3)
+	{
+		if (_form_name == form_kind[i])
+		{
+			j = i;
+			ok =1;
+			std::cout << "Intern creates <" << _form_name << ">" << std::endl;
+		}
+	}
+	if (ok == 0)
+		throw NoExitFormException();
+	i = -1;
+	while (++i < 3)
+		if (i != j)
+			delete(form_book[i]);
+	return (form_book[j]);
+}
+
+const char* Intern::NoExitFormException::what() const throw()
+{
+	return ("Intern is Down! : Form_Name is not Exist! What's this ??");
 }

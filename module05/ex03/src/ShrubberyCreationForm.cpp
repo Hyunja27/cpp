@@ -12,10 +12,11 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137)
 {}
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& name)
-: Form(name, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
+: Form("ShrubberyCreationForm", 145, 137)
 {
 	/* constructor code */
+	this->_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy)
@@ -43,6 +44,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	if (this == &obj)
 		return (*this);
 	this->_isSigned = obj._isSigned;
+	this->_target = obj._target;
 	return (*this);
 }
 
@@ -76,7 +78,9 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 /* ************************************************************************** */
 void ShrubberyCreationForm::execute(Bureaucrat const & executor)
 {
-	std::ofstream fo("<" + executor.getName() + ">" + "_shrubbery");
+	if (executor.getGrade() > this->getExecuteGrade())
+		throw GradeTooLowException();
+	std::ofstream fo("<" + this->_target + ">" + "_shrubbery");
 	if (fo.fail())
 		throw ShrubberyCreationForm::FileCreationException();
 	fo << 
@@ -111,7 +115,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor)
 	"█────────────██████────────────█" << std::endl <<
 	"█────────────██████────────────█" << std::endl <<
 	"█────────────██████────────────█" << std::endl;
-	fo << "The shrubbery was created by " << executor.getName() << "!" << std::endl;
+	fo << "The shrubbery was created by " << this->_target << "!" << std::endl;
 	fo.close();
 }
 

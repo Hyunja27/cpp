@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Intern
 
 SRC_DIR = src
 INC_DIR = inc
@@ -14,6 +14,7 @@ SRC =  $(addprefix $(SRC_DIR)/, \
 		RobotomyRequestForm.cpp\
 		ShrubberyCreationForm.cpp\
 		Form.cpp\
+		Intern.cpp\
 		main.cpp\
 		)
 
@@ -23,6 +24,7 @@ INC =  $(addprefix $(INC_DIR)/, \
 		PresidentialPardonForm.hpp\
 		RobotomyRequestForm.hpp\
 		ShrubberyCreationForm.hpp\
+		Intern.hpp\
 		)
 
 GREEN = \033[32m

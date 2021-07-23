@@ -9,9 +9,11 @@ class PresidentialPardonForm : public Form
 {
 	private:
 		/* declare member variable */
+		std::string _target;
+
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(const std::string& name);
+		PresidentialPardonForm(const std::string& target);
 		PresidentialPardonForm(const PresidentialPardonForm& copy);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
 		virtual ~PresidentialPardonForm();

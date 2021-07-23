@@ -6,31 +6,40 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/17 01:49:41 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/23 18:07:46 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "AWeapon.hpp"
-#include "Character.hpp"
-#include "Enemy.hpp"
-#include "PlasmaRifle.hpp"
-#include "PowerFist.hpp"
-#include "RadScorpion.hpp"
-#include "SuperMutant.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "Animal.hpp"
 
-int main() 
+int main()
 {
-    Character* me = new Character("me");
-    std::cout << *me;
-    Enemy* b = new RadScorpion();
-    AWeapon* pr = new PlasmaRifle(); AWeapon* pf = new PowerFist();
-    me->equip(pr);
-    std::cout << *me; me->equip(pf);
-    me->attack(b);
-    std::cout << *me; me->equip(pr);
-    std::cout << *me; me->attack(b);
-    std::cout << *me; me->attack(b);
-    std::cout << *me;
-    return 0;
+	{
+		Animal *Animals_A[42];
+		
+		for (int i = 0; i < 42; ++i)
+		{
+			if (i % 2 == 0)
+				Animals_A[i] = new Dog();
+			else
+				Animals_A[i] = new Cat();
+		}
+		for (int i = 0; i < 42; ++i)
+		{
+			delete Animals_A[i];
+		}
+
+		std::cout << "============= Deep Copy Test =============" << std::endl;
+
+		Dog tmp1;
+		Dog tmp2;
+
+		tmp2 = tmp1;
+
+	}
+	system("leaks brain");
 }
+

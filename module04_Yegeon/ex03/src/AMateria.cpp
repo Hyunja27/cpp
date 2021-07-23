@@ -1,4 +1,4 @@
-#include "Squad.hpp"
+#include "AMateria.hpp"
 
 /* ************************************************************************** */
 /* ---------------------------- STATIC VARIABLE ----------------------------- */
@@ -10,51 +10,49 @@
 /* ------------------------------ CONSTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Squad::Squad() 
+AMateria::AMateria() {}
+AMateria::AMateria(const std::string& type)
 {
-	this->all = 0;
-	this->_count = 0;
+	this->_xp = 0;
+	if (type == "Ice" || type == "ICE")
+		this->_type = "ice";
+	else if (type == "Cure" || type == "CURE")
+		this->_type = "cure";
+	else
+		this->_type = type;
 }
 
-Squad::Squad(const Squad& copy) /* copy-constructor initialize list */
+AMateria::AMateria(const AMateria& copy)
 {
-	this->all = 0;
-	this->_count = 0;
-	
-	this->operator=(copy);
+	this->_xp = copy._xp;
+	this->_type = copy._type;
 }
 
 /* ************************************************************************** */
 /* ------------------------------- DESTRUCTOR ------------------------------- */
 /* ************************************************************************** */
 
-Squad::~Squad()
+AMateria::~AMateria()
 {
-	int i = 0;
 	/* destructor code */
-	if (this->all != 0)
-	{
-		i = -1;
-		while (++i < this->_count)
-			delete(this->all[i]);
-		delete(all);
-	}
+
 }
 
 /* ************************************************************************** */
 /* -------------------------------- OVERLOAD -------------------------------- */
 /* ************************************************************************** */
 
-Squad& Squad::operator=(const Squad& obj)
+AMateria& AMateria::operator=(const AMateria& obj)
 {
 	if (this == &obj)
 		return (*this);
-	/* overload= code */
+	this->_xp = obj._xp;
+	this->_type= obj._type;
 	return (*this);
 }
 
 // std::ostream&
-// operator<<(std::ostream& out, const Squad& squad)
+// operator<<(std::ostream& out, const AMateria& aMateria)
 // {
 // 	/* ostream output overload code */
 // 	return (out);
@@ -81,41 +79,14 @@ Squad& Squad::operator=(const Squad& obj)
 /* ************************************************************************** */
 /* ---------------------------- MEMBER FUNCTION ----------------------------- */
 /* ************************************************************************** */
-int Squad::getCount() const
+std::string const & AMateria::getType() const
 {
-	return (this->_count);
+	return (_type);
 }
 
-ISpaceMarine* Squad::getUnit(int num) const
-{
-	return (this->all[num]);
-}
+// AMateria* AMateria::clone() const
+// {
+// 	return (new AMateria(*this));
+// }
 
-int Squad::push(ISpaceMarine* new_man)
-{
-	if (new_man == 0)
-	{
-		std::cout << "this man is Null man!" << std::endl;
-		return (-1);
-	}
-	if (this->all != 0)
-	{
-		int i = -1;
-		while (this->all[++i])
-			if (new_man == this->all[i])
-			{
-				std::cout << "this man already our Crew!" << std::endl;
-				return (-1);
-			}
-	}
-	this->_count++;
-	if (this->all == 0)
-		this->all = new ISpaceMarine*[this->_count];
-	else
-	{
-		delete(this->all);
-		this->all = new ISpaceMarine*[this->_count];
-	}
-	this->all[(this->_count - 1)] = new_man;
-	return (this->_count);
-}
+// void use(ICharacter& target);

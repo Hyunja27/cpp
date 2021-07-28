@@ -6,7 +6,7 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/14 14:02:23 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/28 15:41:43 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 int main( void ) {
 
-    Claptrap A("Num_A");
-    Claptrap B("Num_B");
+    Claptrap A("Test_A");
+    Claptrap B("Test_B");
     
     A.attack("You");
-    B.attack("Num_A");
+    B.attack("Test_A");
 
-    A.takeDamage(0);
+    A.takeDamage(B.get_Attack_damage());
     A.beRepaired(0);
 
     return 0;

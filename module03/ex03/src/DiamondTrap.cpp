@@ -90,6 +90,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj)
 void DiamondTrap::whoAmI()
 {
 	std::cout << "My Name is <" << this->_name << "> !" << std::endl;
+	std::cout << "My Mother's Name is <" << Claptrap::get_Name() << "> !" << std::endl;
 }
 
 void DiamondTrap::attack(std::string const & target)

@@ -12,6 +12,7 @@
 
 Claptrap::Claptrap() 
 {
+	// std::cout << "Default Clap is Borned !" << std::endl;
 	this->Hit_point = 10;
 	this->Energy_point = 10;
 	this->Attack_damage = 0;

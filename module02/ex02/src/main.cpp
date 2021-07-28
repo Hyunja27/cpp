@@ -6,7 +6,7 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/13 23:33:16 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/28 16:32:00 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main( void )
     std::cout << ++a << std::endl; 
     std::cout << a << std::endl; 
     std::cout << a++ << std::endl; 
+    
     std::cout << a << std::endl;
     
     std::cout << b << std::endl;

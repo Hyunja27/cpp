@@ -12,7 +12,6 @@ class Fixed
 	public:
 		Fixed();
 		Fixed(const Fixed& copy);
-		Fixed& operator=(const Fixed& obj);
 		virtual ~Fixed();
 		/* declare member function */
 		int getRawBits(void) const;

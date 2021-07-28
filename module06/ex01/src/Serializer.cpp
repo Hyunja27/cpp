@@ -101,7 +101,7 @@ Data* Serializer::deserialize(uintptr_t raw)
 
 	rt->id_num = *reinterpret_cast<int*>(tmp);
 	rt->name = *reinterpret_cast<std::string*>(tmp + sizeof(int*));
-	rt->height = *reinterpret_cast<float*>(tmp + sizeof(int*) + sizeof(std::string));
+	rt->height = *reinterpret_cast<float*>(tmp + sizeof(int*) + sizeof(std::string));  
 
 	return (rt);
 }

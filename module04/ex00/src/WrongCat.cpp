@@ -3,6 +3,7 @@
 WrongCat::WrongCat() : WrongAnimal("Cat") {
 }
 WrongCat::~WrongCat() {
+	std::cout << "Wrongcat fall asleep..!" << std::endl;
 }
 WrongCat::WrongCat(const WrongCat& other) {
 	*this = other;

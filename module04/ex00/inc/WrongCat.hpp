@@ -7,6 +7,6 @@ public:
 	~WrongCat();
 	WrongCat(const WrongCat&);
 	WrongCat& operator=(const WrongCat&);
-	virtual void makeSound() const;
+	void makeSound() const;
 };
 #endif

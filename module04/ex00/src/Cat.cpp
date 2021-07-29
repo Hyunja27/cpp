@@ -2,6 +2,7 @@
 Cat::Cat() : Animal("Cat") {
 }
 Cat::~Cat() {
+	std::cout << "Cat fall asleep..!" << std::endl;
 }
 Cat::Cat(const Cat& other) {
 	*this = other;

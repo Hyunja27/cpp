@@ -7,6 +7,7 @@ WrongAnimal::WrongAnimal(std::string type) {
 	this->type = type;
 }
 WrongAnimal::~WrongAnimal() {
+	std::cout << "WrongAnimal fall asleep..!" << std::endl;
 }
 WrongAnimal::WrongAnimal(const WrongAnimal& other) {
 	*this = other;

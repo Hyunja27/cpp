@@ -6,6 +6,7 @@ Animal::Animal(std::string type) {
 	this->type = type;
 }
 Animal::~Animal() {
+	std::cout << "Animal fall asleep..!" << std::endl;
 }
 Animal::Animal(const Animal& other) {
 	*this = other;

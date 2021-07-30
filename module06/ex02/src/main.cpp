@@ -6,66 +6,110 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/29 14:44:53 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/30 19:24:55 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Serializer.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+
+Base * generate(void)
+{
+    int rt = rand() % 3;
+
+    if (rt == 0)
+        return (new B);
+    else if (rt == 1)
+        return (new A);
+    else
+        return (new C);
+}
+
+void identify(Base* p)
+{
+
+    if (dynamic_cast<A *>(p))
+        std::cout << "A Type" << std::endl;
+    else if (dynamic_cast<B *>(p))
+        std::cout << "B Type" << std::endl;
+    else if (dynamic_cast<C *>(p))
+        std::cout << "C Type" << std::endl;
+    else
+        std::cout << "what type... Coding siruu......." << std::endl;
+}
+
+void identify(Base& p)
+{
+
+    try
+    {
+        Base & tmp1 = dynamic_cast<A &>(p);
+        std::cout << "A Type" << std::endl;
+        (void)tmp1;
+        return ;
+    }
+    catch(const std::exception& e){}
+    
+    try
+    {
+        Base & tmp2 = dynamic_cast<B &>(p);
+        std::cout << "B Type" << std::endl;
+        (void)tmp2;
+        return ;
+    }
+    catch(const std::exception& e){}
+    
+    try
+    {
+        Base & tmp3 = dynamic_cast<C &>(p);
+        std::cout << "C Type" << std::endl;
+        (void)tmp3;
+        return ;
+    }
+    catch(const std::exception& e){}
+    std::cout << "what type... Coding siruu......." << std::endl;
+}
 
 int main(void)
 {
-    Data test_d1;
-    // Data *test_d2 = new Data;
-    Serializer S;
+    srand(time(NULL));
     
-    uintptr_t serialized_key;
-    Data*     deserialized_val;
+    Base * tmp_Base = new Base;
+    Base * tmp_A = new A;
+    Base * tmp_B = new B;
+    Base * tmp_C = new C;
+
+    Base * tmp_rand;
+
+    std::cout << "===============  PTR check  ===============" << std::endl;
+
+    identify(tmp_A);
+    identify(tmp_B);
+    identify(tmp_C);
+    identify(tmp_Base);
     
-    test_d1.id_num = 42;
-    test_d1.name = "spark";
-    test_d1.height = 189;
+    tmp_rand = generate();
+    identify(tmp_rand);
 
-    // test_d2->id_num = 42;
-    // test_d2->name = "spark";
-    // test_d2->height = 189;
-
-    std::cout << std::endl << "========== Basic Data ==========" << std::endl;
-    std::cout << "id_num: " << test_d1.id_num << std::endl;
-    std::cout << "name: " << test_d1.name << std::endl;
-    std::cout << "height: " << test_d1.height << std::endl;
-
+    std::cout << "===============  REP check  ===============" << std::endl;
     
-
-    std::cout << std::endl << "========== Serialized_key ==========" << std::endl;   
-    serialized_key = S.serialize(&test_d1);
-    std::cout << "   -> " << serialized_key << std::endl;
-    std::cout << " & -> " << &serialized_key << std::endl;
+    identify(&(*tmp_A));
+    identify(&(*tmp_B));
+    identify(&(*tmp_C));
+    identify(&(*tmp_Base));
     
-    std::cout << std::endl << "========== DeSerialized_val ==========" << std::endl;
-    deserialized_val = S.deserialize(serialized_key);
-    std::cout << "id_num: " << deserialized_val->id_num << std::endl;
-    std::cout << "name: " << deserialized_val->name << std::endl;
-    std::cout << "height: " << deserialized_val->height << std::endl;
+    delete (tmp_rand);
+    tmp_rand = generate();
+    identify(&(*tmp_rand));
 
-    // std::cout << std::endl << "========== DeSerialized_val ==========" << std::endl;
-    // test_d2 = S.deserialize(serialized_key);
-    // std::cout << "id_num &: " << &test_d2->id_num << std::endl;
-    // std::cout << "name &: " << &test_d2->name << std::endl;
-    // std::cout << "height &: " << &test_d2->height << std::endl;
-    // std::cout << "id_num: " << test_d2->id_num << std::endl;
-    // std::cout << "name: " << test_d2->name << std::endl;
-    // std::cout << "height: " << test_d2->height << std::endl;
-
-    delete(deserialized_val);
-
+    delete (tmp_rand);
+    delete (tmp_A);
+    delete (tmp_B);
+    delete (tmp_C);
+    
+       
     return 0;
 }
-
-    // std::cout << "id_num &: " << &test_d1.id_num << std::endl;
-    // std::cout << "name &: " << &test_d1.name << std::endl;
-    // std::cout << "height &: " << &test_d1.height << std::endl;
-    
-    // std::cout << "id_num &: " << &deserialized_val->id_num << std::endl;
-    // std::cout << "name &: " << &deserialized_val->name << std::endl;
-    // std::cout << "height &: " << &deserialized_val->height << std::endl;

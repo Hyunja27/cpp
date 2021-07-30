@@ -6,7 +6,7 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/17 21:16:49 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/07/30 14:57:11 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ int main()
     me->equip(tmp);
     tmp = src->createMateria("cure"); 
     me->equip(tmp);
+
+    
     ICharacter* bob = new Character("bob");
+
+    
     me->use(0, *bob); me->use(1, *bob);
     delete bob; delete me;
     delete src;

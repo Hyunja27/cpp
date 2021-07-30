@@ -9,12 +9,14 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		Serializer.cpp\
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		Serializer.hpp\
+		Base.hpp\
+		A.hpp\
+		B.hpp\
+		C.hpp\
 		)
 
 GREEN = \033[32m

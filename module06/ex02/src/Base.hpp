@@ -9,11 +9,10 @@ class Base
 	private:
 		/* declare member variable */
 	public:
-		virtual ~Base();
+		virtual ~Base() {};
 
 		/* declare member function */
 };
-
 
 
 #endif

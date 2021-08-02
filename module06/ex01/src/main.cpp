@@ -6,7 +6,7 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/29 14:44:53 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/08/02 13:06:15 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int main(void)
     std::cout << "height: " << test_d1.height << std::endl;
 
     
-
     std::cout << std::endl << "========== Serialized_key ==========" << std::endl;   
     serialized_key = S.serialize(&test_d1);
     std::cout << "   -> " << serialized_key << std::endl;

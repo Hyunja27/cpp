@@ -6,7 +6,7 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/21 17:05:45 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/08/03 14:33:55 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int main()
     std::cout << *test_Sh;
     std::cout << *test_P;
     std::cout << *test_R;
-    
 
     try
     {
@@ -66,7 +65,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout<< e.what() << '\n';
     }
 
     try

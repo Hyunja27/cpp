@@ -6,7 +6,7 @@
 /*   By: hyunja <hyunja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 16:08:38 by spark             #+#    #+#             */
-/*   Updated: 2021/07/20 15:38:30 by hyunja           ###   ########.fr       */
+/*   Updated: 2021/08/03 14:19:34 by hyunja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main()
 
     Form test10("test_10", 10, 8);
     Form test90("test_90", 90, 88);
-    Form test140("test_140", 140, 138);
-        
+    Form test140("test_140",140, 138);
+         
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << c << std::endl;

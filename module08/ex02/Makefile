@@ -1,4 +1,4 @@
-NAME = Span
+NAME = MutantStack
 
 
 SRC_DIR = src
@@ -10,12 +10,12 @@ RM = rm
 RMFLAGS = -f
 
 SRC =  $(addprefix $(SRC_DIR)/, \
-		Span.cpp\
+		MutantStack.cpp \
 		main.cpp\
 		)
 
 INC =  $(addprefix $(INC_DIR)/, \
-		Span.hpp\
+		MutantStack.hpp \
 		)
 
 GREEN = \033[32m

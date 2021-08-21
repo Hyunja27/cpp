@@ -13,7 +13,7 @@ class Array
 		unsigned int len;
 	public:
 		Array() {this->array = new T; len = 0; std::cout << this->array << std::endl;};
-		Array(const unsigned int i) {this->array = new T[i]; len = i; std::cout << this->array << std::endl;};
+		Array(const unsigned int i) {this->array = new T[i]; len = i; /*std::cout << this->array << std::endl; */ };
 		Array(const Array& copy) {this->operator=(copy);};
 		Array& operator=(const Array& obj) 
 		{	
@@ -23,7 +23,7 @@ class Array
 			this->array = new T[obj.size()]; 
 			for (unsigned int i = 0; i < obj.size(); i++)
 				this->array[i] = obj.array[i];
-			std::cout << this->array << std::endl;;
+			// std::cout << this->array << std::endl;
 			this->len = obj.len;
 			return *this;
 		};

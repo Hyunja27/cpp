@@ -4,6 +4,22 @@
 # include <string>
 # include <iostream>
 
+class Awesome {
+	public:
+		Awesome(int n = 1) : _n(n) {}
+		Awesome(const Awesome &rhs) { _n = rhs._n; }
+		int getN() const { return _n; }
+		bool operator==( Awesome const & rhs ) const { return (this->_n == rhs._n); } 
+		bool operator!=( Awesome const & rhs ) const{ return (this->_n != rhs._n); } 
+		bool operator>( Awesome const & rhs ) const { return (this->_n > rhs._n); } 
+		bool operator<( Awesome const & rhs ) const { return (this->_n < rhs._n); } 
+		bool operator>=( Awesome const & rhs ) const {return (this->_n >= rhs._n); } 
+		bool operator<=( Awesome const & rhs ) const { return (this->_n <= rhs._n); } 
+		
+	private: 
+		int _n;
+};
+
 template <typename T>
 
 void swap(T a, T b)

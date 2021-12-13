@@ -23,7 +23,6 @@ class Sorcerer
 		void polymorph(Victim const &) const;
 		std::string get_name(void) const;
 		std::string get_title(void) const;
-
 };
 
 /* global operator overload */

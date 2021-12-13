@@ -30,5 +30,4 @@ class AMateria
 // /* global operator overload */
 // std::ostream&	operator<<(std::ostream& out, const AMateria& aMateria);
 
-
 #endif
